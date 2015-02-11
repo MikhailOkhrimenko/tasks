@@ -3,17 +3,24 @@
  */
 var tasksApp;
 tasksApp = angular.module("tasksApp");
-var model;
-model = {
-    items: []
-};
+
 tasksApp.controller("tasksController", function ($scope) {
-    $scope.list = model;
+    $scope.items = [];
+    $scope.text;
+    $scope.all_tasks = $scope.done_tasks = $scope.not_done_tasks = 0;
     $scope.addItem = function (text) {
         if (!(text == null || text == "")) {
-            $scope.list.items.push({task: text, done: false});
+            $scope.items.push({task: text, done: false});
         } else {
             alert("Пусто");
         }
+        $scope.text = "";
+        $scope.all_tasks = $scope.items.length;
+        angular.forEach($scope.items, function(el) {
+            if (el.done) {
+                $scope.done_tasks += el.done ? 1 : 0;
+            }
+        })
+        $scope.not_done_tasks = $scope.all_tasks - $scope.done_tasks;
     }
 });

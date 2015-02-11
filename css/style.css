@@ -13,3 +13,10 @@ body {
 h1.page-header, .form-inline {
     text-align: center;
 }
+.itog {
+    font-size: 1.6rem;
+    font-weight: bold;
+}
+.check {
+    background-color: #b2dba1;
+}
