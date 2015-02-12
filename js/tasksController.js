@@ -2,7 +2,7 @@
  * Created by Мишаня on 10.02.2015.
  */
 var tasksApp;
-tasksApp = angular.module("tasksApp");
+tasksApp = angular.module("tasksApp", []);
 
 tasksApp.controller("tasksController", function ($scope) {
     $scope.items = [];

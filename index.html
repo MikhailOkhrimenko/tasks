@@ -4,19 +4,18 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
-    <!--<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>-->
     <script type="text/javascript" src="bower_components/angularjs/angular.min.js"></script>
-    <script type="text/javascript">
-        angular.module("tasksApp", []);
-    </script>
     <script type="text/javascript" src="js/tasksController.js"></script>
-    <!--<script type="text/javascript" src="js/control.js"></script>-->
 </head>
 <body ng-controller="tasksController">
 <div class="wrapper">
-    <h1 class="page-header"> Список дел </h1>
-    <div class="panel">
-        <div class="form-inline">
+    <header>
+        <div id="logo">
+            <img src="img/logo.png" alt="Logicify" title="Logicify" />
+        </div>
+        <div class="content-head">
+            <h1 class="page-header"> Список дел </h1>
+            <div class="form-inline">
             <div class="form-group">
                 <div class="col-md-8">
                     <input class="form-control" ng-model="text" placeholder = "Что сделать?" />
@@ -28,6 +27,9 @@
                 </div>
             </div>
         </div>
+        </div>
+    </header>
+    <div class="panel">
         <table class="table table-hover">
             <thead>
             <tr>
@@ -37,20 +39,23 @@
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="item in items" ng-class="myVar">
+            <tr ng-repeat="item in items" ng-class="item.done ? 'check' : ''">
                 <td>{{$index + 1}}</td>
                 <td>{{item.task}}</td>
-                <td><input type="checkbox" ng-model="item.done" ng-click="item.done ? myVar='check' : myVar=''"/></td>
+                <td><input type="checkbox" ng-model="item.done" /></td>
             </tr>
             </tbody>
         </table>
         <div>
             <h3>Свод:</h3>
             <p>Всего дел нужно сделать: <span class="itog" ng-bind="all_tasks"></span></p>
-            <p>Уже сделано: <span class="itog" ng-bind="done_tasks"></p>
-            <p>Еще нужно сделать: <span class="itog" ng-bind="not_done_tasks"></p>
+            <p>Уже сделано: <span class="itog" ng-bind="done_tasks"></span></p>
+            <p>Еще нужно сделать: <span class="itog" ng-bind="not_done_tasks"></span></p>
         </div>
     </div>
+    <footer>
+        <p id="copyright">&copy;&nbsp;Logicify, 2015</p>
+    </footer>
 </div>
 </body>
 </html>

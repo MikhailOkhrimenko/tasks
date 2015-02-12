@@ -10,7 +10,15 @@ body {
     -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
     box-shadow: 0 1px 1px rgba(0,0,0,.05);
 }
-h1.page-header, .form-inline {
+#logo {
+    float: left;
+    margin: 5.1rem 2rem 1rem;
+}
+.content-head {
+    float: left;
+    width: 60%;
+}
+h1, .form-inline {
     text-align: center;
 }
 .itog {
@@ -18,5 +26,12 @@ h1.page-header, .form-inline {
     font-weight: bold;
 }
 .check {
-    background-color: #b2dba1;
+    background-color: #b2dba1 !important;
+    -webkit-transition: background-color ease-in-out .15s;
+    -o-transition: background-color ease-in-out .15s;
+    transition: background-color ease-in-out .15s;
+}
+#copyright {
+    text-align: center;
+    font-size: 1.2rem;
 }
