@@ -42,15 +42,21 @@
             <tr ng-repeat="item in items" ng-class="item.done ? 'check' : ''">
                 <td>{{$index + 1}}</td>
                 <td>{{item.task}}</td>
-                <td><input type="checkbox" ng-model="item.done" /></td>
+                <td>
+                    <input type="checkbox" ng-model="item.done" />
+                    &nbsp;
+                    <a ng-click="removeItem(item)">Удалить</a>
+                </td>
             </tr>
             </tbody>
         </table>
-        <div>
+        <div class="statistics">
+            <hr/>
+            <button class="btn btn-default" ng-click="clearAll()">Удалить все</button>
             <h3>Свод:</h3>
-            <p>Всего дел нужно сделать: <span class="itog" ng-bind="all_tasks"></span></p>
-            <p>Уже сделано: <span class="itog" ng-bind="done_tasks"></span></p>
-            <p>Еще нужно сделать: <span class="itog" ng-bind="not_done_tasks"></span></p>
+            <p>Всего дел нужно сделать: <span class="itog" ng-bind="allTasks"></span></p>
+            <p>Уже сделано: <span class="itog" ng-bind="doneTasks"></span></p>
+            <p>Еще нужно сделать: <span class="itog" ng-bind="notDoneTasks"></span></p>
         </div>
     </div>
     <footer>

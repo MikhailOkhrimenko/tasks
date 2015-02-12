@@ -6,8 +6,8 @@ tasksApp = angular.module("tasksApp", []);
 
 tasksApp.controller("tasksController", function ($scope) {
     $scope.items = [];
-    $scope.text;
-    $scope.all_tasks = $scope.done_tasks = $scope.not_done_tasks = 0;
+    $scope.allTasks = $scope.doneTasks = $scope.notDoneTasks = 0;
+
     $scope.addItem = function (text) {
         if (!(text == null || text == "")) {
             $scope.items.push({task: text, done: false});
@@ -15,12 +15,33 @@ tasksApp.controller("tasksController", function ($scope) {
             alert("Пусто");
         }
         $scope.text = "";
-        $scope.all_tasks = $scope.items.length;
-        angular.forEach($scope.items, function(el) {
-            if (el.done) {
-                $scope.done_tasks += el.done ? 1 : 0;
+    };
+
+    $scope.$watch('items', function(newVal) {
+        $scope.allTasks = newVal.length;
+    }, true);
+
+    $scope.$watch(function($scope) {
+        return $scope.items.
+            map(function(obj) {
+                return obj.done
+            });
+    }, function (newVal) {
+        $scope.doneTasks = 0;
+        angular.forEach(newVal, function(el) {
+            if (el) {
+                $scope.doneTasks += 1;
             }
-        })
-        $scope.not_done_tasks = $scope.all_tasks - $scope.done_tasks;
-    }
+        });
+        $scope.notDoneTasks = $scope.allTasks - $scope.doneTasks;
+    }, true);
+
+    $scope.clearAll = function() {
+        $scope.items = [];
+    };
+
+    $scope.removeItem = function(object) {
+        var index = $scope.items.indexOf(object);
+        $scope.items.splice(index, 1);
+    };
 });

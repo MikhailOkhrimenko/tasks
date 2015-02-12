@@ -31,6 +31,9 @@ h1, .form-inline {
     -o-transition: background-color ease-in-out .15s;
     transition: background-color ease-in-out .15s;
 }
+a {
+    cursor: pointer;
+}
 #copyright {
     text-align: center;
     font-size: 1.2rem;
