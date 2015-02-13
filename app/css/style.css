@@ -21,6 +21,9 @@ body {
 h1, .form-inline {
     text-align: center;
 }
+.empty-items {
+    text-align: center;
+}
 .itog {
     font-size: 1.6rem;
     font-weight: bold;
@@ -33,6 +36,16 @@ h1, .form-inline {
 }
 a {
     cursor: pointer;
+}
+a:hover {
+    text-decoration: none;
+}
+.box {
+    float: right;
+    visibility: hidden;
+}
+.item:hover .box {
+    visibility: visible;
 }
 #copyright {
     text-align: center;

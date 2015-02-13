@@ -3,15 +3,16 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="app/css/style.css">
     <script type="text/javascript" src="bower_components/angularjs/angular.min.js"></script>
-    <script type="text/javascript" src="js/tasksController.js"></script>
+    <script type="text/javascript" src="app/js/tasksModule.js"></script>
+    <script type="text/javascript" src="app/js/tasksController.js"></script>
 </head>
 <body ng-controller="tasksController">
 <div class="wrapper">
     <header>
         <div id="logo">
-            <img src="img/logo.png" alt="Logicify" title="Logicify" />
+            <a href="/"><img src="app/img/logo.png" alt="Logicify" title="Logicify" /></a>
         </div>
         <div class="content-head">
             <h1 class="page-header"> Список дел </h1>
@@ -39,13 +40,17 @@
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="item in items" ng-class="item.done ? 'check' : ''">
+            <tr ng-show="emptyItems">
+                <td class="empty-items" colspan="3">Список дел пуст</td>
+            </tr>
+            <tr class="item" ng-repeat="item in items" ng-class="item.done ? 'check' : ''">
                 <td>{{$index + 1}}</td>
                 <td>{{item.task}}</td>
                 <td>
                     <input type="checkbox" ng-model="item.done" />
-                    &nbsp;
-                    <a ng-click="removeItem(item)">Удалить</a>
+                    <div class="box">
+                        <a ng-click="removeItem(item)"><i class="glyphicon-trash"></i> Удалить</a>
+                    </div>
                 </td>
             </tr>
             </tbody>

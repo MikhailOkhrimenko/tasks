@@ -1,8 +1,6 @@
 /**
  * Created by Мишаня on 10.02.2015.
  */
-var tasksApp;
-tasksApp = angular.module("tasksApp", []);
 
 tasksApp.controller("tasksController", function ($scope) {
     $scope.items = [];
@@ -19,6 +17,7 @@ tasksApp.controller("tasksController", function ($scope) {
 
     $scope.$watch('items', function(newVal) {
         $scope.allTasks = newVal.length;
+        $scope.emptyItems = $scope.allTasks > 0 ? false : true;
     }, true);
 
     $scope.$watch(function($scope) {
@@ -44,4 +43,5 @@ tasksApp.controller("tasksController", function ($scope) {
         var index = $scope.items.indexOf(object);
         $scope.items.splice(index, 1);
     };
+
 });
