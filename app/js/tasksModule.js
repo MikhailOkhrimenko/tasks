@@ -4,3 +4,15 @@
 
 var tasksApp;
 tasksApp = angular.module("tasksApp", []);
+
+tasksApp.service("lsService", function(){
+
+    this.addLs = function (items) {
+        localStorage.setItem('itemsData',JSON.stringify(items));
+    };
+
+    this.getLs = function () {
+        return JSON.parse(localStorage.getItem('itemsData'));
+    };
+
+});
