@@ -8,11 +8,15 @@ tasksApp = angular.module("tasksApp", []);
 tasksApp.service("lsService", function(){
 
     this.addLs = function (items) {
+        console.log("Service.addLs");
         localStorage.setItem('itemsData',JSON.stringify(items));
     };
 
     this.getLs = function () {
-        return JSON.parse(localStorage.getItem('itemsData'));
+        console.log("Service.getLs");
+        if (localStorage.length > 0) {
+            return JSON.parse(localStorage.getItem('itemsData'));
+        }
     };
 
 });
