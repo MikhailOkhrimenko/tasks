@@ -4,7 +4,7 @@
 
 tasksApp.controller("tasksController", function ($scope, lsService) {
     console.log("Инициализация контроллера");
-    $scope.items = lsService.getLs();
+    $scope.items = lsService.getAllItems();
     if (typeof($scope.items) == "undefined") {
         $scope.items = [];
     }
@@ -12,50 +12,67 @@ tasksApp.controller("tasksController", function ($scope, lsService) {
 
     $scope.addItem = function (text) {
         console.log("Добавление записи addItem");
-        $scope.id = new Date().getTime();
         if (!(text == null || text == "")) {
-            $scope.items.push({id: $scope.id, task: text, done: false});
+            lsService.addItems(text);
         } else {
             alert("Пусто");
         }
         $scope.text = "";
+        $scope.items = lsService.getAllItems();
     };
 
-    $scope.$watchCollection(function($scope) {
+    $scope.$watch(function($scope) {
         return $scope.items;
     }, function(newVal) {
         console.log("Watcher Items");
         $scope.allTasks = newVal.length;
         $scope.emptyItems = $scope.allTasks > 0 ? false : true;
-        lsService.addLs($scope.items);
-        $scope.itemsLs = lsService.getLs();
-    });
-
-    $scope.$watch(function($scope) {
-        return $scope.items.
-            map(function(obj) {
-                return obj.done
-            });
-    }, function (newVal) {
-        console.log("Watcher items.done");
         $scope.doneTasks = 0;
-        angular.forEach(newVal, function(el) {
-            if (el) {
+        for (i = 0; i < newVal.length; i++) {
+            if (newVal[i].done) {
                 $scope.doneTasks += 1;
+                lsService.updateItemById (newVal[i].id, newVal[i].done);
             }
-        });
+        };
         $scope.notDoneTasks = $scope.allTasks - $scope.doneTasks;
     }, true);
+
+    //$scope.$watch(function($scope) {
+    //    return $scope.items.
+    //        map(function(obj) {
+    //            return obj.done
+    //        });
+    //}, function (newVal) {
+    //    console.log("Watcher items.done");
+    //    $scope.doneTasks = 0;
+    //    //angular.forEach(newVal, function(el) {
+    //    //    if (el) {
+    //    //        $scope.doneTasks += 1;
+    //    //        var id = $scope.items.id;
+    //    //        lsService.updateItemById (id, el);
+    //    //    }
+    //    //});
+    //    for (i = 0; i < newVal.length; i++) {
+    //        if (newVal[i]) {
+    //            $scope.doneTasks += 1;
+    //            //var id = $scope.items.id;
+    //            //lsService.updateItemById (id, el);
+    //        }
+    //    };
+    //    $scope.notDoneTasks = $scope.allTasks - $scope.doneTasks;
+    //}, true);
 
     $scope.clearAll = function() {
         console.log("Удаление всех записей clearAll");
         $scope.items = [];
+        lsService.setItem($scope.items);
     };
 
     $scope.removeItem = function(object) {
         console.log("Удаление одной записи removeItem");
-        var index = $scope.items.indexOf(object);
-        $scope.items.splice(index, 1);
+        var id = object.id;
+        lsService.removeItemsById (id);
+        $scope.items = lsService.getAllItems();
     };
 
 });
