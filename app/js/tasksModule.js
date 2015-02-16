@@ -7,15 +7,6 @@ tasksApp = angular.module("tasksApp", []);
 
 tasksApp.service("lsService", function(){
 
-    this.autoIncrementId = function () {
-        var autoIncrementId;
-        autoIncrementId = localStorage.getItem("autoIncrement");
-        if (autoIncrementId == null || typeof(autoIncrementId) == "undefined") {
-            autoIncrementId = 0;
-        }
-        return autoIncrementId;
-    };
-
     this.addItems = function (text) {
         console.log("Service.addItems");
         var id = parseInt(this.autoIncrementId()) + 1;
@@ -35,6 +26,16 @@ tasksApp.service("lsService", function(){
         }
     };
 
+    this.updateItemById = function(id, done) {
+        var items = this.getAllItems();
+        for (i = 0; i < items.length; i++) {
+            if (items[i].id == id) {
+                items[i].done = done;
+            }
+        }
+        this.setItem(items);
+    };
+
     this.removeItemsById = function (id) {
         var items = this.getAllItems();
         for (i = 0; i < items.length; i++) {
@@ -49,14 +50,13 @@ tasksApp.service("lsService", function(){
         localStorage.setItem('itemsData',JSON.stringify(items));
     };
 
-    this.updateItemById = function(id, done) {
-        var items = this.getAllItems();
-        for (i = 0; i < items.length; i++) {
-            if (items[i].id == id) {
-                items.done = done;
-            }
+    this.autoIncrementId = function () {
+        var autoIncrementId;
+        autoIncrementId = localStorage.getItem("autoIncrement");
+        if (autoIncrementId == null || typeof(autoIncrementId) == "undefined") {
+            autoIncrementId = 0;
         }
-        this.setItem(items);
+        return autoIncrementId;
     };
 
 });

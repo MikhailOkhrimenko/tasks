@@ -37,31 +37,6 @@ tasksApp.controller("tasksController", function ($scope, lsService) {
         $scope.notDoneTasks = $scope.allTasks - $scope.doneTasks;
     }, true);
 
-    //$scope.$watch(function($scope) {
-    //    return $scope.items.
-    //        map(function(obj) {
-    //            return obj.done
-    //        });
-    //}, function (newVal) {
-    //    console.log("Watcher items.done");
-    //    $scope.doneTasks = 0;
-    //    //angular.forEach(newVal, function(el) {
-    //    //    if (el) {
-    //    //        $scope.doneTasks += 1;
-    //    //        var id = $scope.items.id;
-    //    //        lsService.updateItemById (id, el);
-    //    //    }
-    //    //});
-    //    for (i = 0; i < newVal.length; i++) {
-    //        if (newVal[i]) {
-    //            $scope.doneTasks += 1;
-    //            //var id = $scope.items.id;
-    //            //lsService.updateItemById (id, el);
-    //        }
-    //    };
-    //    $scope.notDoneTasks = $scope.allTasks - $scope.doneTasks;
-    //}, true);
-
     $scope.clearAll = function() {
         console.log("Удаление всех записей clearAll");
         $scope.items = [];
