@@ -43,7 +43,7 @@
             <tr ng-show="emptyItems">
                 <td class="empty-items" colspan="3">Список дел пуст</td>
             </tr>
-            <tr class="item" ng-repeat="item in items" ng-class="item.done ? 'check' : ''">
+            <tr class="item" ng-repeat="item in items track by $index" ng-class="item.done ? 'check' : ''">
                 <td>{{$index + 1}}</td>
                 <td>
                     <span ng-class="editTaskId == item.id ? 'hide' : 'show'">{{item.task}}</span>
@@ -51,7 +51,7 @@
                         <input type="text" class="form-control" ng-model="item.task">
                         <br/>
                         <button class="btn btn-default" ng-click="applyEdit(item)">OK</button>&nbsp;
-                        <button class="btn btn-default" ng-click="cancelEdit(item)">Отмена</button>
+                        <button class="btn btn-default" ng-click="cancelEdit()">Отмена</button>
                     </span>
                 </td>
                 <td>
@@ -73,12 +73,6 @@
             <p>Еще нужно сделать: <span class="itog" ng-bind="notDoneTasks"></span></p>
         </div>
     </div>
-
-    <!--<div>-->
-        <!--<p>{{itemsLs}}</p>-->
-        <!--<p>{{items}}</p>-->
-    <!--</div>-->
-
     <footer>
         <p id="copyright">&copy;&nbsp;Logicify, 2015</p>
     </footer>

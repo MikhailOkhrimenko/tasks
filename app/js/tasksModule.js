@@ -5,11 +5,11 @@
 var tasksApp;
 tasksApp = angular.module("tasksApp", []);
 
-tasksApp.service("lsService", function(){
+tasksApp.service("crudLocalStorageService", function(){
 
-    this.addItems = function (text) {
+    this.addItem = function (text) {
         console.log("Service.addItems");
-        var id = parseInt(this.autoIncrementId()) + 1;
+        var id = parseInt(this.getAutoIncrementId()) + 1;
         var items = this.getAllItems();
         if (typeof(items) == "undefined") {
             items = [];
@@ -26,31 +26,26 @@ tasksApp.service("lsService", function(){
         }
     };
 
-    this.updateItemById = function(id, value, mode) {
+    this.getItemById = function (id) {
         var items = this.getAllItems();
-        //if (mode == "done") {
         for (var i = 0; i < items.length; i++) {
             if (items[i].id == id) {
-                if (mode == "done") {
-                    items[i].done = value;
-                }
-                if (mode == "task") {
-                    items[i].task = value;
-                }
+                return items[i];
             }
         }
-        //if (done == null) {
-        //    for (var i = 0; i < items.length; i++) {
-        //        if (items[i].id == id) {
-        //            items[i].task = task;
-        //        }
-        //    }
-        //}
+    };
 
+    this.updateItemById = function(id, value) {
+        var items = this.getAllItems();
+        for (var i = 0; i < items.length; i++) {
+            if (items[i].id == id) {
+                items[i] = value;
+            }
+        }
         this.setItem(items);
     };
 
-    this.removeItemsById = function (id) {
+    this.removeItemById = function (id) {
         var items = this.getAllItems();
         for (var i = 0; i < items.length; i++) {
             if (items[i].id == id) {
@@ -64,7 +59,7 @@ tasksApp.service("lsService", function(){
         localStorage.setItem('itemsData',JSON.stringify(items));
     };
 
-    this.autoIncrementId = function () {
+    this.getAutoIncrementId = function () {
         var autoIncrementId;
         autoIncrementId = localStorage.getItem("autoIncrement");
         if (autoIncrementId == null || typeof(autoIncrementId) == "undefined") {
