@@ -45,11 +45,20 @@
             </tr>
             <tr class="item" ng-repeat="item in items" ng-class="item.done ? 'check' : ''">
                 <td>{{$index + 1}}</td>
-                <td>{{item.task}}</td>
+                <td>
+                    <span ng-class="editTaskId == item.id ? 'hide' : 'show'">{{item.task}}</span>
+                    <span ng-class="editTaskId == item.id ? 'show' : 'hide'">
+                        <input type="text" class="form-control" ng-model="item.task">
+                        <br/>
+                        <button class="btn btn-default" ng-click="applyEdit(item)">OK</button>&nbsp;
+                        <button class="btn btn-default" ng-click="cancelEdit(item)">Отмена</button>
+                    </span>
+                </td>
                 <td>
                     <input type="checkbox" ng-model="item.done" />
                     <div class="box">
-                        <a ng-click="removeItem(item)"><i class="glyphicon glyphicon-trash"></i> Удалить</a>
+                        <a ng-click="editItem(item)" ng-hide="item.done"><i class="glyphicon glyphicon-pencil"></i> Редактировать</a>
+                        <a ng-click="removeItem(item)" ng-show="item.done"><i class="glyphicon glyphicon-trash"></i> Удалить</a>
                     </div>
                 </td>
             </tr>

@@ -26,19 +26,33 @@ tasksApp.service("lsService", function(){
         }
     };
 
-    this.updateItemById = function(id, done) {
+    this.updateItemById = function(id, value, mode) {
         var items = this.getAllItems();
-        for (i = 0; i < items.length; i++) {
+        //if (mode == "done") {
+        for (var i = 0; i < items.length; i++) {
             if (items[i].id == id) {
-                items[i].done = done;
+                if (mode == "done") {
+                    items[i].done = value;
+                }
+                if (mode == "task") {
+                    items[i].task = value;
+                }
             }
         }
+        //if (done == null) {
+        //    for (var i = 0; i < items.length; i++) {
+        //        if (items[i].id == id) {
+        //            items[i].task = task;
+        //        }
+        //    }
+        //}
+
         this.setItem(items);
     };
 
     this.removeItemsById = function (id) {
         var items = this.getAllItems();
-        for (i = 0; i < items.length; i++) {
+        for (var i = 0; i < items.length; i++) {
             if (items[i].id == id) {
                 items.splice(i, 1);
             }
