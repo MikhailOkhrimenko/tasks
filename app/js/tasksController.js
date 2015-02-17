@@ -2,6 +2,37 @@
  * Created by Мишаня on 10.02.2015.
  */
 
+
+/*
+* 1.избавится от     if (typeof($scope.items) == "undefined") {
+ $scope.items = [];
+ }
+*
+* 2. методы сервиса должны оперировать полными сущиностями  (addItem(text))
+*
+* 3. ng-class - есть более короткий синтакиси
+*
+* 4. кнопка "добавить" должна быть некативной если данные невалидные
+*
+* 5. не все методы сервиса должны быть доступны снаружи
+*
+* 6. хотя бы для ключей локал стореджа нужно использовать константы
+*
+* 7. избавится от (localStorage.length > 0)
+*
+* 8. избавится от crudLocalStorageService.getAllItems() в обработчиках пользовательских методов
+*
+* 9.  $scope.addItem = function (text)  аргумент лишний
+*
+* 10. нет транслиту!
+*
+*
+* ------------------------------------------
+* 
+* либа lodash, интергировать и применить где это возможно
+*
+* */
+
 tasksApp.controller("tasksController", function ($scope, crudLocalStorageService) {
     console.log("Инициализация контроллера");
     $scope.items = crudLocalStorageService.getAllItems();
