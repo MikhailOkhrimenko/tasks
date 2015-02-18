@@ -20,14 +20,15 @@ tasksApp.service("localStorageService", function(){
         localStorage.setItem(itemsDataKey, JSON.stringify(object));
     }
 
-    this.addItem = function (item, object) {
+    this.addItem = function (item) {
         console.log("Service.addItems");
         var id = getAutoIncrementId() + 1;
+        var items = this.getAllItems();
         var addItem = _.assign({"id": id}, item);
-        object.push(addItem);
+        items.push(addItem);
         localStorage.setItem(autoIncrementKey, id);
-        setItem(object);
-        return object;
+        setItem(items);
+        return items;
     };
 
     this.getAllItems = function () {
@@ -52,28 +53,30 @@ tasksApp.service("localStorageService", function(){
     this.updateItemById = function(id, value) {
         console.log("Service.updateItemById");
         var items = this.getAllItems();
-        for (var i = 0; i < items.length; i++) {
-            if (items[i].id == id) {
-                items[i] = value;
+        var newItems = _.map(items, function (object) {
+            if (object.id == id) {
+                object = value;
             }
-        }
-        setItem(items);
+            return object;
+        });
+        setItem(newItems);
     };
 
-    this.removeItemById = function (id, object) {
+    this.removeItemById = function (id) {
         console.log("Service.removeItemById");
-        _.remove(object, function (object) {
+        var items = this.getAllItems();
+        _.remove(items, function (object) {
             return object.id == id;
         });
-        setItem(object);
-        return object;
+        setItem(items);
+        return items;
     };
 
-    this.removeAllItems = function (object) {
+    this.removeAllItems = function () {
         console.log("Service.removeAllItems");
-        object = [];
-        setItem(object);
-        return object;
+        var items = [];
+        setItem(items);
+        return items;
     };
 
 });

@@ -60,3 +60,6 @@ a:hover {
 .show {
     visibility: visible;
 }
+input[type="checkbox"] {
+    cursor: pointer;
+}

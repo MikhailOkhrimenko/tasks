@@ -39,11 +39,12 @@ tasksApp.controller("tasksController", function ($scope, localStorageService) {
     $scope.allTasks = $scope.doneTasks = $scope.notDoneTasks = 0;
     $scope.text = "";
     $scope.editTaskId = null;
+    //$scope.editTaskText = "";
 
     $scope.addItem = function () {
         console.log("Добавление записи addIttem");
         var item = {"task": $scope.text, "done": false};
-        $scope.items = localStorageService.addItem(item, $scope.items);
+        $scope.items = localStorageService.addItem(item);
         $scope.text = "";
     };
 
@@ -59,7 +60,6 @@ tasksApp.controller("tasksController", function ($scope, localStorageService) {
             }
             try {
                 if (newVal[i].done != oldVal[i].done) {
-                    $scope.editTaskId = null;
                     localStorageService.updateItemById(newVal[i].id, newVal[i]);
                 }
             }
@@ -70,30 +70,31 @@ tasksApp.controller("tasksController", function ($scope, localStorageService) {
 
     $scope.clearAll = function() {
         console.log("Удаление всех записей clearAll");
-        $scope.items = localStorageService.removeAllItems($scope.items);
+        $scope.items = localStorageService.removeAllItems();
+        $scope.editTaskId = null;
     };
 
     $scope.removeItem = function(item) {
         console.log("Удаление одной записи removeItem");
-        $scope.editTaskId = null;
-        $scope.items = localStorageService.removeItemById (item.id, $scope.items);
+        $scope.items = localStorageService.removeItemById(item.id);
     };
 
-    $scope.editItem = function(object) {
+    $scope.editItem = function(item) {
         console.log("Редактирование одной записи editItem");
-        $scope.editTaskId = object.id;
-        $scope.items = localStorageService.getAllItems();
+        $scope.editTaskId = item.id;
+        //$scope.editTaskText = item.task;
     };
 
-    $scope.applyEdit = function(object) {
+    $scope.applyEdit = function(item) {
         console.log('applyEdit');
-        localStorageService.updateItemById(object.id, object);
+        localStorageService.updateItemById(item.id, item);
         $scope.editTaskId = null;
     };
 
     $scope.cancelEdit = function() {
         console.log('cancelEdit');
         $scope.editTaskId = null;
+        //$scope.editTaskText = "";
         $scope.items = localStorageService.getAllItems();
     };
 });
