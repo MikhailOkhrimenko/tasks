@@ -21,7 +21,7 @@
             <div class="form-inline">
                 <div class="form-group">
                     <div class="col-md-8">
-                        <input class="form-control" ng-model="text" placeholder = "Что сделать?" ng-disabled="editTaskId"/>
+                        <input type="text" class="form-control" ng-model="text" placeholder = "Что сделать?" ng-disabled="editTaskId"/>
                     </div>
                 </div>
                 <div class="form-group">
@@ -42,7 +42,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr ng-class="{'hide': allTasks}">
+            <tr ng-hide="allTasks">
                 <td class="empty-items" colspan="3">Список дел пуст</td>
             </tr>
             <tr class="item" ng-repeat="item in items track by $index" ng-class="{'check' : item.done}">
@@ -51,14 +51,15 @@
                     <span ng-class="editTaskId == item.id ? 'hide' : 'show'" ng-bind="item.task"></span>
                     <span ng-class="editTaskId == item.id ? 'show' : 'hide'">
                         <input type="text" class="form-control" ng-model="item.task">
-                        <br/>
-                        <button class="btn btn-default" ng-click="applyEdit(item)">OK</button>&nbsp;
-                        <button class="btn btn-default" ng-click="cancelEdit()">Отмена</button>
+                        <span id="edit-control">
+                            <button class="btn btn-default" ng-click="applyEdit(item)">OK</button>&nbsp;
+                            <button class="btn btn-default" ng-click="cancelEdit()">Отмена</button>
+                        </span>
                     </span>
                 </td>
                 <td>
                     <input type="checkbox" ng-model="item.done" ng-disabled="editTaskId"/>
-                    <div class="box" ng-class="{'hide' : editTaskId}">
+                    <div class="box" ng-hide="editTaskId">
                         <a ng-click="editItem(item)" ng-hide="item.done"><i class="glyphicon glyphicon-pencil"></i> Редактировать</a>
                         <a ng-click="removeItem(item)" ng-show="item.done"><i class="glyphicon glyphicon-trash"></i> Удалить</a>
                     </div>
@@ -68,7 +69,10 @@
         </table>
         <div class="statistics">
             <hr/>
-            <button class="btn btn-default" ng-disabled="!allTasks" ng-click="clearAll()">Удалить все</button>
+            <span ng-show="allTasks">
+                <button class="btn btn-default" ng-disabled="editTaskId" ng-click="clearAll()">Удалить все</button>&nbsp;
+                <button class="btn btn-default" ng-disabled="editTaskId" ng-show="doneTasks" ng-click="clearAllDone()">Удалить все выполненные</button>
+            </span>
             <h3>Статистика:</h3>
             <p>Всего дел нужно сделать: <span class="total" ng-bind="allTasks"></span></p>
             <p>Уже сделано: <span class="total" ng-bind="doneTasks"></span></p>

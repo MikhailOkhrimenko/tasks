@@ -4,7 +4,7 @@
 
 
 /*
-* 1.избавится от     if (typeof($scope.items) == "undefined") {
+* 1.избавится от     if (typeof($scope.items) == "undefined") { - сделал
  $scope.items = [];
  }
 *
@@ -20,7 +20,7 @@
 *
 * 7. избавится от (localStorage.length > 0) -сделал
 *
-* 8. избавится от localStorageService.getAllItems() в обработчиках пользовательских методов
+* 8. избавится от localStorageService.getAllItems() в обработчиках пользовательских методов - сделал
 *
 * 9.  $scope.addItem = function (text)  аргумент лишний - сделал
 *
@@ -39,12 +39,12 @@ tasksApp.controller("tasksController", function ($scope, localStorageService) {
     $scope.allTasks = $scope.doneTasks = $scope.notDoneTasks = 0;
     $scope.text = "";
     $scope.editTaskId = null;
-    //$scope.editTaskText = "";
 
     $scope.addItem = function () {
         console.log("Добавление записи addIttem");
         var item = {"task": $scope.text, "done": false};
-        $scope.items = localStorageService.addItem(item);
+        item = localStorageService.addItem(item);
+        $scope.items.push(item);
         $scope.text = "";
     };
 
@@ -70,19 +70,29 @@ tasksApp.controller("tasksController", function ($scope, localStorageService) {
 
     $scope.clearAll = function() {
         console.log("Удаление всех записей clearAll");
-        $scope.items = localStorageService.removeAllItems();
-        $scope.editTaskId = null;
+        localStorageService.removeAllItems();
+        $scope.items = [];
+    };
+
+    $scope.clearAllDone = function() {
+        console.log("Удаление всех выполненных записей clearAll");
+        localStorageService.removeAllDoneItems();
+        _.remove($scope.items, "done", true);
     };
 
     $scope.removeItem = function(item) {
         console.log("Удаление одной записи removeItem");
-        $scope.items = localStorageService.removeItemById(item.id);
+        var id = item.id;
+        localStorageService.removeItemById(id);
+        //_.remove($scope.items, function (object) {
+        //    return object.id == id;
+        //});
+        _.remove($scope.items, "id", id);
     };
 
     $scope.editItem = function(item) {
         console.log("Редактирование одной записи editItem");
         $scope.editTaskId = item.id;
-        //$scope.editTaskText = item.task;
     };
 
     $scope.applyEdit = function(item) {
@@ -93,8 +103,13 @@ tasksApp.controller("tasksController", function ($scope, localStorageService) {
 
     $scope.cancelEdit = function() {
         console.log('cancelEdit');
+        var item = localStorageService.getItemById($scope.editTaskId);
+        $scope.items = _.map($scope.items, function (object) {
+            if (object.id == $scope.editTaskId) {
+                object = item;
+            }
+            return object;
+        });
         $scope.editTaskId = null;
-        //$scope.editTaskText = "";
-        $scope.items = localStorageService.getAllItems();
     };
 });

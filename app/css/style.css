@@ -1,6 +1,18 @@
 body {
     background-color: lightgray;
 }
+hr {
+    margin-top: 0 !important;
+}
+h1, .form-inline {
+    text-align: center;
+}
+.hide {
+    visibility: hidden;
+}
+.show {
+    visibility: visible;
+}
 .wrapper {
     width: 80rem;
     margin: 1rem auto;
@@ -10,9 +22,7 @@ body {
     -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
     box-shadow: 0 1px 1px rgba(0,0,0,.05);
 }
-hr {
-    margin-top: 0rem !important;
-}
+/*-------- Header ----------*/
 #logo {
     float: left;
     margin: 5.1rem 2rem 1rem;
@@ -21,15 +31,12 @@ hr {
     float: left;
     width: 60%;
 }
-h1, .form-inline {
-    text-align: center;
-}
+/*--------- Content ----------*/
 .empty-items {
     text-align: center;
 }
-.total {
-    font-size: 1.6rem;
-    font-weight: bold;
+input[type="checkbox"] {
+    cursor: pointer;
 }
 .check {
     background-color: #b2dba1 !important;
@@ -50,16 +57,16 @@ a:hover {
 .item:hover .box {
     visibility: visible;
 }
+#edit-control {
+    display: block;
+    margin-top: 0.5rem;
+}
+.total {
+    font-size: 1.6rem;
+    font-weight: bold;
+}
+/*--------- Footer ---------*/
 #copyright {
     text-align: center;
     font-size: 1.2rem;
-}
-.hide {
-    visibility: hidden;
-}
-.show {
-    visibility: visible;
-}
-input[type="checkbox"] {
-    cursor: pointer;
 }

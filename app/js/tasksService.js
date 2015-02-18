@@ -16,8 +16,8 @@ tasksApp.service("localStorageService", function(){
         return parseInt(autoIncrementId);
     }
 
-    function setItem (object) {
-        localStorage.setItem(itemsDataKey, JSON.stringify(object));
+    function setItem (items) {
+        localStorage.setItem(itemsDataKey, JSON.stringify(items));
     }
 
     this.addItem = function (item) {
@@ -28,7 +28,7 @@ tasksApp.service("localStorageService", function(){
         items.push(addItem);
         localStorage.setItem(autoIncrementKey, id);
         setItem(items);
-        return items;
+        return addItem;
     };
 
     this.getAllItems = function () {
@@ -40,43 +40,48 @@ tasksApp.service("localStorageService", function(){
         return items;
     };
 
-    //this.getItemById = function (id) {
-    //    console.log("Service.getItemById");
-    //    var items = this.getAllItems();
-    //    for (var i = 0; i < items.length; i++) {
-    //        if (items[i].id == id) {
-    //            return items[i];
-    //        }
-    //    }
-    //};
+    this.getItemById = function (id) {
+        console.log("Service.getItemById");
+        var items = this.getAllItems();
+        //return _.find(items, function (object) {
+        //    return object.id == id;
+        //});
+        return _.find(items, "id", id);
+    };
 
-    this.updateItemById = function(id, value) {
+    this.updateItemById = function(id, item) {
         console.log("Service.updateItemById");
         var items = this.getAllItems();
-        var newItems = _.map(items, function (object) {
+        items = _.map(items, function (object) {
             if (object.id == id) {
-                object = value;
+                object = item;
             }
             return object;
         });
-        setItem(newItems);
+        setItem(items);
     };
 
     this.removeItemById = function (id) {
         console.log("Service.removeItemById");
         var items = this.getAllItems();
-        _.remove(items, function (object) {
-            return object.id == id;
-        });
+        //_.remove(items, function (object) {
+        //    return object.id == id;
+        //});
+        _.remove(items, "id", id);
         setItem(items);
-        return items;
     };
 
     this.removeAllItems = function () {
         console.log("Service.removeAllItems");
         var items = [];
         setItem(items);
-        return items;
+    };
+
+    this.removeAllDoneItems = function () {
+        console.log("Service.removeAllDoneItems");
+        var items = this.getAllItems();
+        _.remove(items, "done", true);
+        setItem(items);
     };
 
 });
