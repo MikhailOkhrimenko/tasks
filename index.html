@@ -4,9 +4,11 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="app/css/style.css">
+    <script type="text/javascript" src="bower_components/lodash/lodash.min.js"></script>
     <script type="text/javascript" src="bower_components/angularjs/angular.min.js"></script>
     <script type="text/javascript" src="app/js/tasksModule.js"></script>
     <script type="text/javascript" src="app/js/tasksController.js"></script>
+    <script type="text/javascript" src="app/js/tasksService.js"></script>
 </head>
 <body ng-controller="tasksController">
 <div class="wrapper">
@@ -17,17 +19,17 @@
         <div class="content-head">
             <h1 class="page-header"> Список дел </h1>
             <div class="form-inline">
-            <div class="form-group">
-                <div class="col-md-8">
-                    <input class="form-control" ng-model="text" placeholder = "Что сделать?" />
+                <div class="form-group">
+                    <div class="col-md-8">
+                        <input class="form-control" ng-model="text" placeholder = "Что сделать?" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-8">
+                        <button class="btn btn-default" ng-disabled="!text" ng-click="addItem()">Добавить</button>
+                    </div>
                 </div>
             </div>
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-8">
-                    <button class="btn btn-default" ng-click="addItem(text)">Добавить</button>
-                </div>
-            </div>
-        </div>
         </div>
     </header>
     <div class="panel">
@@ -40,13 +42,13 @@
             </tr>
             </thead>
             <tbody>
-            <tr ng-show="emptyItems">
+            <tr ng-class="{'hide': allTasks}">
                 <td class="empty-items" colspan="3">Список дел пуст</td>
             </tr>
-            <tr class="item" ng-repeat="item in items track by $index" ng-class="item.done ? 'check' : ''">
-                <td>{{$index + 1}}</td>
+            <tr class="item" ng-repeat="item in items track by $index" ng-class="{'check' : item.done}">
+                <td ng-bind="$index + 1"></td>
                 <td>
-                    <span ng-class="editTaskId == item.id ? 'hide' : 'show'">{{item.task}}</span>
+                    <span ng-class="editTaskId == item.id ? 'hide' : 'show'" ng-bind="item.task"></span>
                     <span ng-class="editTaskId == item.id ? 'show' : 'hide'">
                         <input type="text" class="form-control" ng-model="item.task">
                         <br/>
@@ -66,11 +68,11 @@
         </table>
         <div class="statistics">
             <hr/>
-            <button class="btn btn-default" ng-click="clearAll()">Удалить все</button>
+            <button class="btn btn-default" ng-disabled="!allTasks" ng-click="clearAll()">Удалить все</button>
             <h3>Статистика:</h3>
-            <p>Всего дел нужно сделать: <span class="itog" ng-bind="allTasks"></span></p>
-            <p>Уже сделано: <span class="itog" ng-bind="doneTasks"></span></p>
-            <p>Еще нужно сделать: <span class="itog" ng-bind="notDoneTasks"></span></p>
+            <p>Всего дел нужно сделать: <span class="total" ng-bind="allTasks"></span></p>
+            <p>Уже сделано: <span class="total" ng-bind="doneTasks"></span></p>
+            <p>Еще нужно сделать: <span class="total" ng-bind="notDoneTasks"></span></p>
         </div>
     </div>
     <footer>
