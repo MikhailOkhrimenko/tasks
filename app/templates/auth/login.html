@@ -1,0 +1,19 @@
+<header>
+    <div class="logo center-block">
+        <a href="#/"><img src="app/img/logo.png" alt="Logicify" title="Logicify" /></a>
+    </div>
+</header>
+<section>
+    <h1>Вход в систему</h1>
+    <hr/>
+    <form class="form-inline">
+        <label for="login">E-mail:</label>
+        <input id="login" type="email" class="form-control"/>
+        <label for="password">Пароль:</label>
+        <input id="password" type="password" class="form-control"/>
+        <button type="submit" class="btn btn-default" ng-click="signIn()">Войти</button>
+    </form>
+    <div class="text-center">
+        <a ui-sref="signUp">Зарегистрироваться</a>
+    </div>
+</section>
