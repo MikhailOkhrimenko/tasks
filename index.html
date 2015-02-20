@@ -2,20 +2,29 @@
 <html ng-app="tasksApp">
 <head>
     <meta charset="utf-8">
+    <title ng-bind="$state.current.name + ' - Logicify'">Logicify</title>
+
+    <link rel="icon" type="image/png" href="favicon.png">
+
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="app/css/style.css">
+
     <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="bower_components/lodash/lodash.min.js"></script>
     <script type="text/javascript" src="bower_components/angularjs/angular.min.js"></script>
     <script type="text/javascript" src="bower_components/ui-router/release/angular-ui-router.min.js"></script>
-    <script type="text/javascript" src="app/js/module/tasksApp.js"></script>
-    <script type="text/javascript" src="app/js/module/authModule.js"></script>
-    <script type="text/javascript" src="app/js/module/signUpModule.js"></script>
-    <script type="text/javascript" src="app/js/config/tasksConfig.js"></script>
-    <script type="text/javascript" src="app/js/controller/tasksController.js"></script>
-    <script type="text/javascript" src="app/js/controller/authController.js"></script>
-    <script type="text/javascript" src="app/js/controller/signUpController.js"></script>
-    <script type="text/javascript" src="app/js/service/tasksService.js"></script>
+
+    <script type="text/javascript" src="app/js/Tasks/tasksApp.js"></script>
+    <script type="text/javascript" src="app/js/Auth/authModule.js"></script>
+    <script type="text/javascript" src="app/js/SignUp/signUpModule.js"></script>
+    <script type="text/javascript" src="app/js/Tasks/controller/tasksController.js"></script>
+    <script type="text/javascript" src="app/js/Tasks/service/tasksService.js"></script>
+    <script type="text/javascript" src="app/js/Auth/controller/authController.js"></script>
+    <script type="text/javascript" src="app/js/Auth/service/authService.js"></script>
+    <script type="text/javascript" src="app/js/SignUp/controller/signUpController.js"></script>
+    <script type="text/javascript" src="app/js/SignUp/service/signUpService.js"></script>
+
+
 </head>
 <body>
 <div class="wrapper">

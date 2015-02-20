@@ -2,14 +2,11 @@
  * Created by Мишаня on 17.02.2015.
  */
 
-tasksApp.service("localStorageService", function(){
-
-    var autoIncrementKey = "autoIncrement";
-    var itemsDataKey = "itemsData";
+tasksApp.service("localStorageService", function(config){
 
     function getAutoIncrementId () {
         var autoIncrementId;
-        autoIncrementId = localStorage.getItem(autoIncrementKey);
+        autoIncrementId = localStorage.getItem(config.AUTO_INCREMENT_KEY);
         if (autoIncrementId == null || typeof(autoIncrementId) == "undefined") {
             autoIncrementId = "0";
         }
@@ -17,7 +14,7 @@ tasksApp.service("localStorageService", function(){
     }
 
     function setItem (items) {
-        localStorage.setItem(itemsDataKey, JSON.stringify(items));
+        localStorage.setItem(config.ITEMS_DATA_KEY, JSON.stringify(items));
     }
 
     this.addItem = function (item) {
@@ -26,14 +23,14 @@ tasksApp.service("localStorageService", function(){
         var items = this.getAllItems();
         var addItem = _.assign({"id": id}, item);
         items.push(addItem);
-        localStorage.setItem(autoIncrementKey, id);
+        localStorage.setItem(config.AUTO_INCREMENT_KEY, id);
         setItem(items);
         return addItem;
     };
 
     this.getAllItems = function () {
         console.log("Service.getAllItems");
-        var items = JSON.parse(localStorage.getItem(itemsDataKey));
+        var items = JSON.parse(localStorage.getItem(config.ITEMS_DATA_KEY));
         if (items == null) {
             items = [];
         }

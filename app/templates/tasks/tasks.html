@@ -1,10 +1,13 @@
 <header>
+    <div id="admin-panel">
+        <p>Добро пожаловать: </p>
+    </div>
     <div id="logo" class="logo">
         <a href="#/"><img src="app/img/logo.png" alt="Logicify" title="Logicify" /></a>
     </div>
     <div class="content-head">
         <h1 class="page-header"> Список дел </h1>
-        <div class="form-inline">
+        <form class="form-inline">
             <div class="form-group">
                 <div class="col-md-8">
                     <input type="text" class="form-control" ng-model="text" placeholder = "Что сделать?" ng-disabled="editTaskId"/>
@@ -12,10 +15,10 @@
             </div>
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-8">
-                    <button class="btn btn-default" ng-disabled="!text" ng-click="addItem()">Добавить</button>
+                    <button type="submit" class="btn btn-default" ng-disabled="!text" ng-click="addItem()">Добавить</button>
                 </div>
             </div>
-        </div>
+        </form>
     </div>
 </header>
 <section class="panel">
@@ -35,13 +38,15 @@
             <td ng-bind="$index + 1"></td>
             <td>
                 <span ng-class="editTaskId == item.id ? 'hide' : 'show'" ng-bind="item.task"></span>
-                    <span ng-class="editTaskId == item.id ? 'show' : 'hide'">
+                <span class="hide" ng-class="editTaskId == item.id ? 'show' : 'hide'">
+                    <form>
                         <input type="text" class="form-control" ng-model="item.task"/>
                         <span id="edit-control">
-                            <button class="btn btn-default" ng-click="applyEdit(item)">OK</button>&nbsp;
-                            <button class="btn btn-default" ng-click="cancelEdit()">Отмена</button>
-                        </span>
-                    </span>
+                                <button type="submit" class="btn btn-default" ng-click="applyEdit(item)">OK</button>&nbsp;
+                                <button class="btn btn-default" ng-click="cancelEdit()">Отмена</button>
+                            </span>
+                    </form>
+                </span>
             </td>
             <td>
                 <input type="checkbox" ng-model="item.done" ng-disabled="editTaskId"/>
