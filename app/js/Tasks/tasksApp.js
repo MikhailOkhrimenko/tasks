@@ -21,17 +21,17 @@ tasksApp.config(['$urlRouterProvider', '$stateProvider', function($urlRouterProv
     $stateProvider
         .state("Auth", {
             url: "/login",
-            templateUrl: "app/templates/auth/login.html",
+            templateUrl: "app/views/auth/login.html",
             controller: "authController"
         })
         .state("Tasks", {
             url: "/tasks",
-            templateUrl: "app/templates/tasks/tasks.html",
+            templateUrl: "app/views/tasks/tasks.html",
             controller: "tasksController"
         })
         .state("SignUp", {
             url: "/signup",
-            templateUrl: "app/templates/signUp/signup.html",
+            templateUrl: "app/views/signUp/signup.html",
             controller: "signUpController"
         })
 }]);

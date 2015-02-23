@@ -21,4 +21,9 @@ signUpModule.service("signUpService", function(config){
         allUsersData.push(userData);
         setItem(allUsersData);
     };
+
+    this.uniqueUser = function(userData) {
+        var allUsersData = getAllUsersData();
+        return _.find(allUsersData, userData)
+    };
 });

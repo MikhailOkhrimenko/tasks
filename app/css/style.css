@@ -99,8 +99,25 @@ a:hover {
 }
 /*--------- SignUp ---------*/
 .form-registration {
-    width: 50%;
+    width: 60%;
     margin: 2rem auto;
+}
+/*--------- Datepicker ------*/
+.pull-left, .pull-right {
+    border: none;
+}
+.dropdown-menu {
+    padding: 5px 5px 5px 0;
+}
+ul.dropdown-menu > li > div > table {
+    outline: none;
+}
+ul.dropdown-menu > li > div > table > tbody > tr > td > button > span.ng-binding {
+    font-weight: bold;
+}
+ul.dropdown-menu > li > div > table > tbody > tr > td > button > span.ng-binding.text-muted {
+    color: #adadad;
+    font-weight: normal;
 }
 /*--------- Footer ---------*/
 #copyright {

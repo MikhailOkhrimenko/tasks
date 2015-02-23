@@ -3,4 +3,4 @@
  */
 
 var signUpModule;
-signUpModule = angular.module("signUpModule", []);
+signUpModule = angular.module("signUpModule", ['ui.bootstrap', 'ui.utils']);
