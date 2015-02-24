@@ -2,7 +2,7 @@
  * Created by Мишаня on 10.02.2015.
  */
 
-tasksApp.controller("tasksController", ['$scope', 'localStorageService', function ($scope, localStorageService) {
+tasksModule.controller("tasksController", ['$scope', 'localStorageService', function ($scope, localStorageService) {
     console.log("Инициализация контроллера");
     $scope.items = localStorageService.getAllItems();
     $scope.allTasks = $scope.doneTasks = $scope.notDoneTasks = 0;

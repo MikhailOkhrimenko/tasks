@@ -2,7 +2,7 @@
  * Created by Мишаня on 17.02.2015.
  */
 
-tasksApp.service("localStorageService", function(config){
+tasksModule.service("localStorageService", function(config){
 
     function getAutoIncrementId () {
         var autoIncrementId;
