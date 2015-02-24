@@ -14,10 +14,11 @@ authModule.service("authService", function(config){
 
     this.authUser = function(userData) {
         var allUsersData = getAllUsersData();
-        if (!_.isUndefined(_.find(allUsersData, userData))) {
-            return true;
+        var findUser = _.find(allUsersData, userData);
+        if (!_.isUndefined(findUser)) {
+            return findUser;
         } else {
-            return false;
+            return "";
         }
     };
 });

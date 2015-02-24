@@ -2,16 +2,17 @@
  * Created by Мишаня on 10.02.2015.
  */
 
-tasksModule.controller("tasksController", ['$scope', 'localStorageService', function ($scope, localStorageService) {
+tasksModule.controller("tasksController", ['$scope', 'localStorageService', '$rootScope', function ($scope, localStorageService, $rootScope) {
     console.log("Инициализация контроллера");
-    $scope.items = localStorageService.getAllItems();
+    var nameUser = $rootScope.findUser.name;
+    $scope.items = localStorageService.getAllItems(nameUser);
     $scope.allTasks = $scope.doneTasks = $scope.notDoneTasks = 0;
     $scope.text = "";
     $scope.editTaskId = null;
 
     $scope.addItem = function () {
         console.log("Добавление записи addIttem");
-        var item = {"task": $scope.text, "done": false};
+        var item = {"task": $scope.text, "done": false, "user": nameUser};
         item = localStorageService.addItem(item);
         $scope.items.push(item);
         $scope.text = "";

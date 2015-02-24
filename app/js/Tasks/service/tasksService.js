@@ -28,9 +28,9 @@ tasksModule.service("localStorageService", function(config){
         return addItem;
     };
 
-    this.getAllItems = function () {
+    this.getAllItems = function (nameUser) {
         console.log("Service.getAllItems");
-        var items = JSON.parse(localStorage.getItem(config.ITEMS_DATA_KEY));
+        var items = _.filter(JSON.parse(localStorage.getItem(config.ITEMS_DATA_KEY)), 'user', nameUser);
         if (items == null) {
             items = [];
         }

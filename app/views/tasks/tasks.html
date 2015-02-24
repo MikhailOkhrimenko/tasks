@@ -1,6 +1,7 @@
 <header>
     <div id="admin-panel">
-        <p>Добро пожаловать: </p>
+        <span id="welcome" ng-bind="'Добро пожаловать: ' + findUser.name"></span>
+        <a id="logout" ui-sref="Auth">Выход</a>
     </div>
     <div id="logo" class="logo">
         <a href="#/"><img src="app/img/logo.png" alt="Logicify" title="Logicify" /></a>
