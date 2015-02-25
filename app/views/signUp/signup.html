@@ -6,7 +6,7 @@
 <section>
     <h1>Форма регистрации</h1>
     <hr/>
-    <form name="signupform" novalidate class="form-registration form-horizontal center-block">
+    <form name="signupform" novalidate="" class="form-registration form-horizontal center-block">
         <div class="form-group">
             <label class="col-sm-4 control-label" for="name">* Имя: </label>
             <div class="col-sm-6">
@@ -18,7 +18,7 @@
                        ng-maxlength="25"
                        ng-model="name"
                        ng-model-options="{updateOn: 'blur'}"
-                       required/>
+                       required=""/>
             </div>
         </div>
         <div class="error">
@@ -69,8 +69,7 @@
                        class="form-control"
                        ng-model="email"
                        ng-model-options="{updateOn: 'blur'}"
-                       email-unique=""
-                       required/>
+                       required=""/>
             </div>
         </div>
         <div class="error">
@@ -102,8 +101,7 @@
                        ng-model-options="{updateOn: 'blur'}"
                        name="confirmPassword"
                        ng-pattern="/^(?=.*\d)(?=.*[a-zA-Z]).{6,30}$/"
-                       confirm-password=""
-                       required/>
+                       required=""/>
             </div>
         </div>
         <div class="error">
@@ -111,7 +109,8 @@
         </div>
         <hr/>
         <div class="text-center">
-            <button id="signUp" type="submit" class="btn btn-default" ng-click="signUp()" ng-disabled="signupform.$pristine || signupform.$invalid || confirmPasswordInvalid || notUniqueUser ">Зарегистрироваться</button>
+            <button id="signUp" type="submit" class="btn btn-default" ng-click="signUp()" ng-disabled="signupform.$pristine || signupform.$invalid || confirmPasswordInvalid || notUniqueEmail ">Зарегистрироваться</button>
+            <a class="btn btn-default" ui-sref="Auth">Назад</a>
         </div>
     </form>
 </section>

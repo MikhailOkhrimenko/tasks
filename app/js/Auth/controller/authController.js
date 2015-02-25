@@ -2,18 +2,18 @@
  * Created by Мишаня on 20.02.2015.
  */
 
-authModule.controller("authController", ['$scope', '$state', 'authService', '$rootScope',
-    function($scope, $state, authService, $rootScope) {
+authModule.controller("authController", ['$scope', '$state', 'authService',
+    function($scope, $state, authService) {
         $scope.email = "";
         $scope.password = "";
         $scope.errAuth = "";
 
         $scope.signIn = function() {
             var userData = {"email": _.trim($scope.email), "password": $scope.password};
-            $rootScope.findUser = authService.authUser(userData);
+            var isAuthUser = authService.authUser(userData);
             $scope.email = "";
             $scope.password = "";
-            if ($rootScope.findUser) {
+            if (isAuthUser) {
                 $scope.errAuth = "";
                 $state.go("Tasks");
             } else {

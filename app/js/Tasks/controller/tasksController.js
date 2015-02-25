@@ -2,17 +2,17 @@
  * Created by Мишаня on 10.02.2015.
  */
 
-tasksModule.controller("tasksController", ['$scope', 'localStorageService', '$rootScope', function ($scope, localStorageService, $rootScope) {
+tasksModule.controller("tasksController", ['$scope', 'localStorageService', 'authService', function ($scope, localStorageService, authService) {
     console.log("Инициализация контроллера");
-    var nameUser = $rootScope.findUser.name;
-    $scope.items = localStorageService.getAllItems(nameUser);
+    $scope.authUserData = authService.getAuthUser();
+    $scope.items = localStorageService.getAllItems($scope.authUserData.id);
     $scope.allTasks = $scope.doneTasks = $scope.notDoneTasks = 0;
     $scope.text = "";
     $scope.editTaskId = null;
 
     $scope.addItem = function () {
         console.log("Добавление записи addIttem");
-        var item = {"task": $scope.text, "done": false, "user": nameUser};
+        var item = {"task": $scope.text, "done": false, "user": $scope.authUserData.id};
         item = localStorageService.addItem(item);
         $scope.items.push(item);
         $scope.text = "";
@@ -40,13 +40,13 @@ tasksModule.controller("tasksController", ['$scope', 'localStorageService', '$ro
 
     $scope.clearAll = function() {
         console.log("Удаление всех записей clearAll");
-        localStorageService.removeAllItems();
+        localStorageService.removeAllItems($scope.authUserData.id);
         $scope.items = [];
     };
 
     $scope.clearAllDone = function() {
         console.log("Удаление всех выполненных записей clearAll");
-        localStorageService.removeAllDoneItems();
+        localStorageService.removeAllDoneItems($scope.authUserData.id);
         _.remove($scope.items, "done", true);
     };
 
@@ -54,9 +54,6 @@ tasksModule.controller("tasksController", ['$scope', 'localStorageService', '$ro
         console.log("Удаление одной записи removeItem");
         var id = item.id;
         localStorageService.removeItemById(id);
-        //_.remove($scope.items, function (object) {
-        //    return object.id == id;
-        //});
         _.remove($scope.items, "id", id);
     };
 
@@ -81,5 +78,9 @@ tasksModule.controller("tasksController", ['$scope', 'localStorageService', '$ro
             return object;
         });
         $scope.editTaskId = null;
+    };
+
+    $scope.signOut = function() {
+        authService.signOut();
     };
 }]);

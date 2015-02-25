@@ -18,7 +18,6 @@
     "angularjs": "1.4.0-build.3807",
     "lodash": "~3.2.0",
     "angular-ui-bootstrap": "~0.12.1",
-    "angular-ui-utils": "~0.2.2",
     "angular-ui-router": "~0.2.13",
     "angular-bootstrap": "~0.12.1"
   }

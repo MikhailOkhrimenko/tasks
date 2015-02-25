@@ -15,6 +15,25 @@ signUpModule.controller("signUpController", ['$scope', '$state', 'signUpService'
     };
     $scope.format = 'dd.MM.yyyy';
 
+    $scope.$watch( function() { return $scope.email; },
+        function (value) {
+            var email = {email: value};
+            if (signUpService.uniqueUser(email)) {
+                $scope.notUniqueEmail = true;
+            } else {
+                $scope.notUniqueEmail = false;
+            }
+        }, true);
+
+    $scope.$watch(function() { return $scope.confirmPassword; },
+        function (value) {
+            if ($scope.password !== value) {
+                $scope.confirmPasswordInvalid = true;
+            } else {
+                $scope.confirmPasswordInvalid = false;
+            }
+        }, true);
+
     $scope.open = function($event) {
         $event.preventDefault();
         $event.stopPropagation();

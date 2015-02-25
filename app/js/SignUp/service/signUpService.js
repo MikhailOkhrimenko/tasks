@@ -2,7 +2,16 @@
  * Created by Мишаня on 20.02.2015.
  */
 
-signUpModule.service("signUpService", function(config){
+signUpModule.service("signUpService", ['config', function(config){
+
+    function getAutoIncrementId () {
+        var autoIncrementId;
+        autoIncrementId = localStorage.getItem(config.AUTO_INCREMENT_KEY_USER);
+        if (autoIncrementId == null || typeof(autoIncrementId) == "undefined") {
+            autoIncrementId = "0";
+        }
+        return parseInt(autoIncrementId);
+    }
 
     function setItem (userData) {
         localStorage.setItem(config.USERS_DATA_KEY, JSON.stringify(userData));
@@ -18,12 +27,15 @@ signUpModule.service("signUpService", function(config){
 
     this.setUser = function(userData) {
         var allUsersData = getAllUsersData();
-        allUsersData.push(userData);
+        var id = getAutoIncrementId() + 1;
+        var addUser = _.assign({"id": id}, userData);
+        allUsersData.push(addUser);
+        localStorage.setItem(config.AUTO_INCREMENT_KEY_USER, id);
         setItem(allUsersData);
     };
 
     this.uniqueUser = function(userData) {
         var allUsersData = getAllUsersData();
-        return _.find(allUsersData, userData)
+        return _.find(allUsersData, userData);
     };
-});
+}]);

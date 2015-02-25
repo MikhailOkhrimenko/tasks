@@ -6,9 +6,11 @@ var app;
 app = angular.module("mainApp", ["ui.router", "tasksModule", "authModule", "signUpModule"]);
 
 app.constant( 'config', {
-    AUTO_INCREMENT_KEY: "autoIncrement",
+    AUTO_INCREMENT_KEY_ITEM: "autoIncrementItem",
+    AUTO_INCREMENT_KEY_USER: "autoIncrementUser",
     ITEMS_DATA_KEY: "itemsData",
-    USERS_DATA_KEY: "usersData"
+    USERS_DATA_KEY: "usersData",
+    AUTH_USER_DATA_KEY: "authUser"
 });
 
 app.run(['$rootScope', '$state', function($rootScope, $state) {
@@ -16,7 +18,15 @@ app.run(['$rootScope', '$state', function($rootScope, $state) {
 }]);
 
 app.config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider, $stateProvider) {
-    $urlRouterProvider.otherwise("/login");
+    $urlRouterProvider
+        .when('/tasks', ['$state', 'authService', function($state, authService) {
+            if (authService.getAuthUser()) {
+                $state.go("Tasks");
+            } else {
+                $state.go("Auth");
+            }
+        }])
+        .otherwise("/login");
 
     $stateProvider
         .state("Auth", {
