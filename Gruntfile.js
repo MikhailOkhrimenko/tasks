@@ -1,6 +1,7 @@
 module.exports = function (grunt) {
 
     grunt.initConfig({
+        // gettext - localization
         nggettext_extract: {
             pot: {
                 files: {
@@ -18,12 +19,33 @@ module.exports = function (grunt) {
                 }
             }
         },
+        // less
+        less: {
+            development: {
+                options: {
+                    compress: true,
+                    optimization: 2
+                },
+                files: {
+                    "app/css/style.css": "app/less/style.less" // destination file and source file
+                }
+            }
+        },
+        // server localhost
         watch: {
             livereload: {
                 options: {
                     livereload: '<%= connect.options.livereload %>'
                 },
                 files: ['**/*']
+            },
+            //watch less
+            styles: {
+                files: ['app/less/**/*.less'], // which files to watch
+                tasks: ['less'],
+                options: {
+                    nospawn: true
+                }
             }
         },
         connect: {
@@ -41,7 +63,7 @@ module.exports = function (grunt) {
                             connect().use(
                                 '/bower_components',
                                 connect.static('./bower_components')
-                            ),
+                            )
                             //connect.static(config.appConfig.app)
                         ];
                     }
@@ -54,14 +76,12 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-angular-gettext');
+    grunt.loadNpmTasks('grunt-contrib-less');
 
     grunt.registerTask('default', []);
-    grunt.registerTask('gettext', [
-        'nggettext_extract'
-    ]);
-    grunt.registerTask('gettext-compile', [
-        'nggettext_compile'
-    ]);
+    grunt.registerTask('gettext', ['nggettext_extract']);
+    grunt.registerTask('gettext-compile', ['nggettext_compile']);
+    grunt.registerTask('less-compile', ['less']);
     grunt.registerTask('serve', [
         'connect:livereload',
         'watch'

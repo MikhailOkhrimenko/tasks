@@ -35,13 +35,13 @@ app.run(['$rootScope', '$state', '$urlRouter', 'authService', function($rootScop
 
 app.config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider, $stateProvider) {
     //$urlRouterProvider
-    //    //.when("/tasks", ['$state', 'authService', function($state, authService) {
-    //    //    if (authService.getAuthUser()) {
-    //    //        $state.go("Tasks");
-    //    //    } else {
-    //    //        $state.go("Auth");
-    //    //    }
-    //    //}])
+    //    .when("/tasks", ['$state', 'authService', function($state, authService) {
+    //        if (authService.getAuthUser()) {
+    //            $state.go("Tasks");
+    //        } else {
+    //            $state.go("Auth");
+    //        }
+    //    }])
     //    .otherwise("/login");
 
     $stateProvider
