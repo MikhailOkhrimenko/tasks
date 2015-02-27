@@ -9,6 +9,7 @@ signUpModule.controller("signUpController", ['$scope', '$state', 'signUpService'
     $scope.birthday = "";
     $scope.password = "";
     $scope.confirmPassword = "";
+    $scope.isTerms = false;
     $scope.dateOptions = {
         formatYear: 'yy',
         startingDay: 1
@@ -50,6 +51,16 @@ signUpModule.controller("signUpController", ['$scope', '$state', 'signUpService'
         };
         signUpService.setUser(userData);
         $state.go("Auth");
+    };
+
+    $scope.terms = function($event) {
+        $event.preventDefault();
+        $event.stopPropagation();
+        if ($state.is("SignUp.Terms")) {
+            $state.go("SignUp");
+        } else {
+            $state.go("SignUp.Terms");
+        }
     };
 
 }]);

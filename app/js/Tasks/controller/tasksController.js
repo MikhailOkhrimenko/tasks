@@ -2,7 +2,8 @@
  * Created by Мишаня on 10.02.2015.
  */
 
-tasksModule.controller("tasksController", ['$scope', 'localStorageService', 'authService', function ($scope, localStorageService, authService) {
+tasksModule.controller("tasksController", ['$scope', 'localStorageService', 'authService', '$state',
+  function ($scope, localStorageService, authService, $state) {
     console.log("Инициализация контроллера");
     $scope.authUserData = authService.getAuthUser();
     $scope.items = localStorageService.getAllItems($scope.authUserData.id);
@@ -82,5 +83,6 @@ tasksModule.controller("tasksController", ['$scope', 'localStorageService', 'aut
 
     $scope.signOut = function() {
         authService.signOut();
+        $state.go("Auth");
     };
 }]);

@@ -1,0 +1,151 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Project-Id-Version: \n"
+
+#: app/views/signUp/signup.html:118
+msgid "* - Fields must be filled"
+msgstr ""
+
+#: app/views/signUp/signup.html:95
+msgid "* Confirm password:"
+msgstr ""
+
+#: app/views/signUp/signup.html:11
+msgid "* First Name:"
+msgstr ""
+
+#: app/views/signUp/signup.html:80
+msgid "* Password:"
+msgstr ""
+
+#: app/views/tasks/tasks.html:20
+msgid "Add"
+msgstr ""
+
+#: app/views/tasks/tasks.html:75
+msgid "All tasks:"
+msgstr ""
+
+#: app/views/signUp/signup.html:131
+msgid "Back"
+msgstr ""
+
+#: app/views/signUp/signup.html:44
+msgid "Birthday:"
+msgstr ""
+
+#: app/views/tasks/tasks.html:48
+msgid "Cancel"
+msgstr ""
+
+#: app/views/signUp/signup.html:123
+msgid "Confirm"
+msgstr ""
+
+#: app/views/tasks/tasks.html:32
+msgid "Done"
+msgstr ""
+
+#: app/views/tasks/tasks.html:79
+msgid "Done tasks:"
+msgstr ""
+
+#: app/views/tasks/tasks.html:57
+msgid "Edit"
+msgstr ""
+
+#: app/views/tasks/tasks.html:37
+msgid "Empty list!"
+msgstr ""
+
+#: app/views/signUp/signup.html:76
+msgid "Invalid e-mail!"
+msgstr ""
+
+#: app/views/signUp/signup.html:92
+msgid "Invalid password!<br>Password must be between 6 and 30 characters and only English letters and numbers"
+msgstr ""
+
+#: app/views/signUp/signup.html:28
+msgid "Last Name:"
+msgstr ""
+
+#: app/views/auth/login.html:17
+msgid "Login"
+msgstr ""
+
+#: app/views/tasks/tasks.html:5
+msgid "Logout"
+msgstr ""
+
+#: app/views/tasks/tasks.html:83
+msgid "Needs to be done tasks:"
+msgstr ""
+
+#: app/views/auth/login.html:15
+msgid "Password:"
+msgstr ""
+
+#: app/views/signUp/signup.html:108
+msgid "Passwords do not match!"
+msgstr ""
+
+#: app/views/signUp/signup.html:7
+msgid "Registration Form"
+msgstr ""
+
+#: app/views/tasks/tasks.html:60
+msgid "Remove"
+msgstr ""
+
+#: app/views/tasks/tasks.html:70
+msgid "Remove all"
+msgstr ""
+
+#: app/views/tasks/tasks.html:71
+msgid "Remove all done"
+msgstr ""
+
+#: index.html:41
+msgid "Select a language:"
+msgstr ""
+
+#: app/views/auth/login.html:22
+msgid "Sign Up"
+msgstr ""
+
+#: app/views/tasks/tasks.html:73
+msgid "Statistic:"
+msgstr ""
+
+#: app/views/tasks/tasks.html:11
+msgid "Tasks list"
+msgstr ""
+
+#: app/views/signUp/signup.html:115
+#: app/views/signUp/terms.html:2
+#: app/views/signUp/terms.html:3
+msgid "Terms of use"
+msgstr ""
+
+#: app/views/signUp/signup.html:25
+msgid "The first name must be between 3 and 25 characters!"
+msgstr ""
+
+#: app/views/signUp/signup.html:41
+msgid "The last name must be between 3 and 50 characters!"
+msgstr ""
+
+#: app/views/tasks/tasks.html:3
+msgid "Welcome:"
+msgstr ""
+
+#: app/views/tasks/tasks.html:31
+msgid "What to do"
+msgstr ""
+
+#: app/views/tasks/tasks.html:15
+msgid "What to do?"
+msgstr ""

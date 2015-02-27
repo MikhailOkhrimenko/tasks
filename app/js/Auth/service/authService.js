@@ -2,7 +2,7 @@
  * Created by Мишаня on 20.02.2015.
  */
 
-authModule.service("authService", ['$state', 'config', function($state, config) {
+authModule.service("authService", ['config', function(config) {
 
     function getAllUsersData () {
         var allUsersData = JSON.parse(localStorage.getItem(config.USERS_DATA_KEY));
@@ -34,6 +34,6 @@ authModule.service("authService", ['$state', 'config', function($state, config) 
 
     this.signOut = function () {
         localStorage.removeItem(config.AUTH_USER_DATA_KEY);
-        $state.go("Auth");
+        return true;
     };
 }]);

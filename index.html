@@ -14,6 +14,7 @@
     <script type="text/javascript" src="bower_components/angularjs/angular.min.js"></script>
     <script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script type="text/javascript" src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+    <script type="text/javascript" src="bower_components/angular-gettext/dist/angular-gettext.min.js"></script>
 
     <script type="text/javascript" src="app/js/app.js"></script>
     <script type="text/javascript" src="app/js/Tasks/tasksApp.js"></script>
@@ -25,14 +26,25 @@
     <script type="text/javascript" src="app/js/SignUp/signUpModule.js"></script>
     <script type="text/javascript" src="app/js/SignUp/controller/signUpController.js"></script>
     <script type="text/javascript" src="app/js/SignUp/service/signUpService.js"></script>
+    <script type="text/javascript" src="app/js/translation/translations.js"></script>
+    <script type="text/javascript" src="app/js/controller/languageController.js"></script>
+    <script type="text/javascript" src="app/js/service/languageService.js"></script>
 
 </head>
 <body>
 <div class="wrapper">
     <section ui-view></section>
-    <footer>
+    <footer class="text-center">
         <hr/>
         <p id="copyright">&copy;&nbsp;Logicify, 2015</p>
+        <div ng-controller="languageController" class="form-inline">
+            <label translate="yes">Select a language:</label>
+            <select class="form-control"
+                    ng-model="lang"
+                    ng-options="lang for lang in language"
+                    ng-change="changeLanguage()">
+            </select>
+        </div>
     </footer>
 </div>
 </body>

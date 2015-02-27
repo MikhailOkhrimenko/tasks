@@ -17,7 +17,7 @@ authModule.controller("authController", ['$scope', '$state', 'authService',
                 $scope.errAuth = "";
                 $state.go("Tasks");
             } else {
-                $scope.errAuth = "Не верный логин или пароль";
+                $scope.errAuth = "Invalid username or password!";
             }
         }
     }]);

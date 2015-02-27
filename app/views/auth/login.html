@@ -4,19 +4,22 @@
     </div>
 </header>
 <section>
-    <h1>Вход в систему</h1>
+    <!--<h1 translate="yes">Login</h1>-->
     <hr/>
     <div ng-class="{'show': errAuth}">
-        <p class="error" ng-bind="errAuth"></p>
+        <p class="error" ng-bind="errAuth|translate"></p>
     </div>
     <form class="form-inline" name="loginform" novalidate="">
         <label for="login">E-mail:</label>
         <input id="login" name="login" type="email" class="form-control" ng-model="email" required=""/>
-        <label for="password">Пароль:</label>
+        <label for="password" translate="yes">Password:</label>
         <input id="password" name="password" type="password" class="form-control" ng-model="password" required=""/>
-        <button type="submit" class="btn btn-default" ng-click="signIn()" ng-disabled="loginform.$invalid || loginform.$pristine">Войти</button>
+        <button type="submit" class="btn btn-default" ng-click="signIn()" ng-disabled="loginform.$invalid || loginform.$pristine" translate="yes">Login</button>
     </form>
     <div class="sign-up text-center">
-        <a ui-sref="SignUp"><i class="glyphicon glyphicon-user"></i> Зарегистрироваться</a>
+        <a ui-sref="SignUp">
+            <i class="glyphicon glyphicon-user"></i>&nbsp;
+            {{'Sign Up'|translate}}
+        </a>
     </div>
 </section>
