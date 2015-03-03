@@ -2,38 +2,46 @@
  * Created by Мишаня on 20.02.2015.
  */
 
-authModule.service("authService", ['config', function(config) {
+define([
+    'authModule'
+], function(app) {
 
-    function getAllUsersData () {
-        var allUsersData = JSON.parse(localStorage.getItem(config.USERS_DATA_KEY));
-        if (allUsersData == null) {
-            allUsersData = [];
+    console.log('authService');
+
+    app.service("authService", ['config', function (config) {
+
+        function getAllUsersData() {
+            var allUsersData = JSON.parse(localStorage.getItem(config.USERS_DATA_KEY));
+            if (allUsersData == null) {
+                allUsersData = [];
+            }
+            return allUsersData;
         }
-        return allUsersData;
-    }
 
-    this.authUser = function(userData) {
-        var allUsersData = getAllUsersData();
-        var findUser = _.find(allUsersData, userData);
-        if (!_.isUndefined(findUser)) {
-            var authUser = _.omit(findUser, 'password');
-            localStorage.setItem(config.AUTH_USER_DATA_KEY, JSON.stringify(authUser));
+        this.authUser = function (userData) {
+            var allUsersData = getAllUsersData();
+            var findUser = _.find(allUsersData, userData);
+            if (!_.isUndefined(findUser)) {
+                var authUser = _.omit(findUser, 'password');
+                localStorage.setItem(config.AUTH_USER_DATA_KEY, JSON.stringify(authUser));
+                return true;
+            } else {
+                return false;
+            }
+        };
+
+        this.getAuthUser = function () {
+            var authUserData = JSON.parse(localStorage.getItem(config.AUTH_USER_DATA_KEY));
+            if (authUserData == null) {
+                return false;
+            }
+            return authUserData;
+        };
+
+        this.signOut = function () {
+            localStorage.removeItem(config.AUTH_USER_DATA_KEY);
             return true;
-        } else {
-            return false;
-        }
-    };
+        };
+    }]);
 
-    this.getAuthUser = function () {
-        var authUserData = JSON.parse(localStorage.getItem(config.AUTH_USER_DATA_KEY));
-        if (authUserData == null) {
-            return false;
-        }
-        return authUserData;
-    };
-
-    this.signOut = function () {
-        localStorage.removeItem(config.AUTH_USER_DATA_KEY);
-        return true;
-    };
-}]);
+});

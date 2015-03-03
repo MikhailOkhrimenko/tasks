@@ -1,6 +1,13 @@
 /**
  * Created by Мишаня on 19.02.2015.
  */
+define([
+    'angular',
+    'ui-bootstrap'
+], function() {
 
-var signUpModule;
-signUpModule = angular.module("signUpModule", ['ui.bootstrap']);
+    console.log('signUpModule');
+
+    return angular.module("signUpModule", ['ui.bootstrap']);
+
+});

@@ -1,23 +1,30 @@
 /**
  * Created by Мишаня on 20.02.2015.
  */
+define([
+    'authModule'
+], function(app) {
 
-authModule.controller("authController", ['$scope', '$state', 'authService',
-    function($scope, $state, authService) {
-        $scope.email = "";
-        $scope.password = "";
-        $scope.errAuth = "";
+    console.log('authController');
 
-        $scope.signIn = function() {
-            var userData = {"email": _.trim($scope.email), "password": $scope.password};
-            var isAuthUser = authService.authUser(userData);
+    app.controller("authController", ['$scope', '$state', 'authService',
+        function ($scope, $state, authService) {
             $scope.email = "";
             $scope.password = "";
-            if (isAuthUser) {
-                $scope.errAuth = "";
-                $state.go("Tasks");
-            } else {
-                $scope.errAuth = "Invalid username or password!";
+            $scope.errAuth = "";
+
+            $scope.signIn = function () {
+                var userData = {"email": _.trim($scope.email), "password": $scope.password};
+                var isAuthUser = authService.authUser(userData);
+                $scope.email = "";
+                $scope.password = "";
+                if (isAuthUser) {
+                    $scope.errAuth = "";
+                    $state.go("Tasks");
+                } else {
+                    $scope.errAuth = "Invalid username or password!";
+                }
             }
-        }
-    }]);
+        }]);
+
+});

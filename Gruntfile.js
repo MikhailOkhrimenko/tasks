@@ -15,7 +15,7 @@ module.exports = function (grunt) {
                     module: 'mainApp'
                 },
                 files: {
-                    'app/js/translation/translations.js': ['**/*.po']
+                    'app/js/Main/translation/translations.js': ['**/*.po']
                 }
             }
         },
@@ -69,6 +69,21 @@ module.exports = function (grunt) {
                     }
                 }
             }
+        },
+        //Build project
+        clean: ['build'],
+        requirejs: {
+            compile: {
+                options: {
+                    baseUrl: "./app",
+                    removeCombined: true,
+                    mainConfigFile: "./app/boot.js",
+                    findNestedDependencies: true,
+                    fileExclusionRegExp: /^\./,
+                    out: "build/js/app.build.js",
+                    name: 'boot'
+                }
+            }
         }
     });
 
@@ -77,6 +92,8 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-angular-gettext');
     grunt.loadNpmTasks('grunt-contrib-less');
+    grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-contrib-requirejs');
 
     grunt.registerTask('default', []);
     grunt.registerTask('gettext', ['nggettext_extract']);
@@ -85,6 +102,10 @@ module.exports = function (grunt) {
     grunt.registerTask('serve', [
         'connect:livereload',
         'watch'
+    ]);
+    grunt.registerTask('build', [
+        'clean',
+        'requirejs'
     ]);
 
 };
