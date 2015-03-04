@@ -20,11 +20,11 @@ msgstr ""
 msgid "* Password:"
 msgstr ""
 
-#: app/views/tasks/tasks.html:20
+#: app/views/Tasks/tasks.html:20
 msgid "Add"
 msgstr ""
 
-#: app/views/tasks/tasks.html:75
+#: app/views/Tasks/tasks.html:75
 msgid "All tasks:"
 msgstr ""
 
@@ -36,7 +36,7 @@ msgstr ""
 msgid "Birthday:"
 msgstr ""
 
-#: app/views/tasks/tasks.html:48
+#: app/views/Tasks/tasks.html:48
 msgid "Cancel"
 msgstr ""
 
@@ -44,19 +44,19 @@ msgstr ""
 msgid "Confirm"
 msgstr ""
 
-#: app/views/tasks/tasks.html:32
+#: app/views/Tasks/tasks.html:32
 msgid "Done"
 msgstr ""
 
-#: app/views/tasks/tasks.html:79
+#: app/views/Tasks/tasks.html:79
 msgid "Done tasks:"
 msgstr ""
 
-#: app/views/tasks/tasks.html:57
+#: app/views/Tasks/tasks.html:57
 msgid "Edit"
 msgstr ""
 
-#: app/views/tasks/tasks.html:37
+#: app/views/Tasks/tasks.html:37
 msgid "Empty list!"
 msgstr ""
 
@@ -68,23 +68,27 @@ msgstr ""
 msgid "Invalid password!<br>Password must be between 6 and 30 characters and only English letters and numbers"
 msgstr ""
 
+#: app/views/Auth/login.html:10
+msgid "Invalid username or password!"
+msgstr ""
+
 #: app/views/signUp/signup.html:28
 msgid "Last Name:"
 msgstr ""
 
-#: app/views/auth/login.html:17
+#: app/views/Auth/login.html:17
 msgid "Login"
 msgstr ""
 
-#: app/views/tasks/tasks.html:5
+#: app/views/Tasks/tasks.html:5
 msgid "Logout"
 msgstr ""
 
-#: app/views/tasks/tasks.html:83
+#: app/views/Tasks/tasks.html:83
 msgid "Needs to be done tasks:"
 msgstr ""
 
-#: app/views/auth/login.html:15
+#: app/views/Auth/login.html:15
 msgid "Password:"
 msgstr ""
 
@@ -96,31 +100,31 @@ msgstr ""
 msgid "Registration Form"
 msgstr ""
 
-#: app/views/tasks/tasks.html:60
+#: app/views/Tasks/tasks.html:60
 msgid "Remove"
 msgstr ""
 
-#: app/views/tasks/tasks.html:70
+#: app/views/Tasks/tasks.html:70
 msgid "Remove all"
 msgstr ""
 
-#: app/views/tasks/tasks.html:71
+#: app/views/Tasks/tasks.html:71
 msgid "Remove all done"
 msgstr ""
 
-#: index.html:41
+#: index.html:27
 msgid "Select a language:"
 msgstr ""
 
-#: app/views/auth/login.html:22
+#: app/views/Auth/login.html:22
 msgid "Sign Up"
 msgstr ""
 
-#: app/views/tasks/tasks.html:73
+#: app/views/Tasks/tasks.html:73
 msgid "Statistic:"
 msgstr ""
 
-#: app/views/tasks/tasks.html:11
+#: app/views/Tasks/tasks.html:11
 msgid "Tasks list"
 msgstr ""
 
@@ -138,14 +142,14 @@ msgstr ""
 msgid "The last name must be between 3 and 50 characters!"
 msgstr ""
 
-#: app/views/tasks/tasks.html:3
+#: app/views/Tasks/tasks.html:3
 msgid "Welcome:"
 msgstr ""
 
-#: app/views/tasks/tasks.html:31
+#: app/views/Tasks/tasks.html:31
 msgid "What to do"
 msgstr ""
 
-#: app/views/tasks/tasks.html:15
+#: app/views/Tasks/tasks.html:15
 msgid "What to do?"
 msgstr ""

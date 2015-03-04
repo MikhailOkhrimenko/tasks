@@ -2,10 +2,6 @@
  * Created by Мишаня on 24.02.2015.
  */
 define([
-    'angular',
-    'angular-ui-router',
-    'angular-gettext',
-    'lodash',
     'auth-include',
     'signUp-include',
     'tasks-include'

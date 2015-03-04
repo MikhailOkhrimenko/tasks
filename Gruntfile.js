@@ -37,7 +37,10 @@ module.exports = function (grunt) {
                 options: {
                     livereload: '<%= connect.options.livereload %>'
                 },
-                files: ['**/*']
+                files: [
+                    'app/**/*',
+                    'index.html'
+                ]
             },
             //watch less
             styles: {
@@ -101,6 +104,12 @@ module.exports = function (grunt) {
                         expand: false,
                         src: 'bower_components/requirejs/require.js',
                         dest: 'build/app/lib/js/require.js'
+                    },
+                    {
+                        expand: true,
+                        cwd: 'bower_components/bootstrap/fonts/',
+                        src: '*',
+                        dest: 'build/app/lib/fonts/'
                     }
                 ]
             },
@@ -181,10 +190,13 @@ module.exports = function (grunt) {
                 ]
             }
         },
-        clean: [
-            'build',
-            '.tmp'
-        ]
+        clean: {
+            before: ['zipped-build'],
+            after: [
+                'build',
+                '.tmp'
+            ]
+        }
         // End build
     });
 
@@ -213,18 +225,18 @@ module.exports = function (grunt) {
         'watch'
     ]);
     grunt.registerTask('build', [
+        'clean:before',
         'requirejs',
         'copy:main',
         'imagemin',
         'useminPrepare',
         'concat',
-        //'cssmin',
         'usemin',
         'copy:css',
         'replace',
         'htmlmin',
         'compress',
-        'clean'
+        'clean:after'
     ]);
 
 };

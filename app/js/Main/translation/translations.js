@@ -1,7 +1,6 @@
 define([
     'mainApp'
 ], function(app) {
-    console.log('mainApp-translation');
     app.run(['gettextCatalog', function (gettextCatalog) {
         /* jshint -W100 */
         gettextCatalog.setStrings('ru', {
@@ -21,6 +20,7 @@ define([
             "Empty list!": "Список пуст!",
             "Invalid e-mail!": "Не верный формат e-mail!",
             "Invalid password!<br>Password must be between 6 and 30 characters and only English letters and numbers": "Не верный пароль!<br>Пароль должен быть от 6 до 30 символов и состоять из латинских букв и цифр",
+            "Invalid username or password!": "Неверное имя пользователя и/или пароль!",
             "Last Name:": "Фамилия:",
             "Login": "Войти",
             "Logout": "Выход",

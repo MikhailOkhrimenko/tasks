@@ -4,12 +4,13 @@
 requirejs.config({
     baseUrl: '/app',
     paths: {
-        'jquery': '../bower_components/jquery/dist/jquery.min',
-        'lodash': '../bower_components/lodash/lodash.min',
-        'angular': '../bower_components/angularjs/angular.min',
-        'angular-ui-router': '../bower_components/angular-ui-router/release/angular-ui-router.min',
-        'ui-bootstrap': '../bower_components/angular-bootstrap/ui-bootstrap-tpls.min',
-        'angular-gettext': '../bower_components/angular-gettext/dist/angular-gettext.min',
+        'jquery': '../bower_components/jquery/dist/jquery',
+        'lodash': '../bower_components/lodash/lodash',
+        'angular': '../bower_components/angularjs/angular',
+        'angular-ui-router': '../bower_components/angular-ui-router/release/angular-ui-router',
+        'ui-bootstrap': '../bower_components/angular-bootstrap/ui-bootstrap-tpls',
+        'angular-gettext': '../bower_components/angular-gettext/dist/angular-gettext',
+        'domReady': '../bower_components/domReady/domReady',
 
         'mainApp': './js/Main/mainApp',
         'languageController': './js/Main/controller/languageController',
@@ -27,7 +28,8 @@ requirejs.config({
         'mainApp-include': './js/Main/mainApp-include',
         'auth-include': './js/Auth/auth-include',
         'signUp-include': './js/SignUp/signUp-include',
-        'tasks-include': './js/Tasks/tasks-include'
+        'tasks-include': './js/Tasks/tasks-include',
+        'bootstrap': './bootstrap'
     },
     shim: {
         'angular': {
@@ -46,4 +48,4 @@ requirejs.config({
     }
 });
 
-require(['mainApp-include']);
+require(['bootstrap'], function() {});

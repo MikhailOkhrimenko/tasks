@@ -29,11 +29,11 @@ msgstr "* Имя:"
 msgid "* Password:"
 msgstr "* Пароль:"
 
-#: app/views/tasks/tasks.html:20
+#: app/views/Tasks/tasks.html:20
 msgid "Add"
 msgstr "Добавить"
 
-#: app/views/tasks/tasks.html:75
+#: app/views/Tasks/tasks.html:75
 msgid "All tasks:"
 msgstr "Все задачи:"
 
@@ -45,7 +45,7 @@ msgstr "Назад"
 msgid "Birthday:"
 msgstr "День рождения:"
 
-#: app/views/tasks/tasks.html:48
+#: app/views/Tasks/tasks.html:48
 msgid "Cancel"
 msgstr "Отменить"
 
@@ -53,19 +53,19 @@ msgstr "Отменить"
 msgid "Confirm"
 msgstr "Зарегистрироваться"
 
-#: app/views/tasks/tasks.html:32
+#: app/views/Tasks/tasks.html:32
 msgid "Done"
 msgstr "Выполнено"
 
-#: app/views/tasks/tasks.html:79
+#: app/views/Tasks/tasks.html:79
 msgid "Done tasks:"
 msgstr "Выполненные задачи:"
 
-#: app/views/tasks/tasks.html:57
+#: app/views/Tasks/tasks.html:57
 msgid "Edit"
 msgstr "Редактировать"
 
-#: app/views/tasks/tasks.html:37
+#: app/views/Tasks/tasks.html:37
 msgid "Empty list!"
 msgstr "Список пуст!"
 
@@ -81,23 +81,27 @@ msgstr ""
 "Не верный пароль!<br>Пароль должен быть от 6 до 30 символов и состоять из "
 "латинских букв и цифр"
 
+#: app/views/Auth/login.html:10
+msgid "Invalid username or password!"
+msgstr "Неверное имя пользователя и/или пароль!"
+
 #: app/views/signUp/signup.html:28
 msgid "Last Name:"
 msgstr "Фамилия:"
 
-#: app/views/auth/login.html:17
+#: app/views/Auth/login.html:17
 msgid "Login"
 msgstr "Войти"
 
-#: app/views/tasks/tasks.html:5
+#: app/views/Tasks/tasks.html:5
 msgid "Logout"
 msgstr "Выход"
 
-#: app/views/tasks/tasks.html:83
+#: app/views/Tasks/tasks.html:83
 msgid "Needs to be done tasks:"
 msgstr "Еще нужно выполнить:"
 
-#: app/views/auth/login.html:15
+#: app/views/Auth/login.html:15
 msgid "Password:"
 msgstr "Пароль:"
 
@@ -109,31 +113,31 @@ msgstr "Пароли не совпадают!"
 msgid "Registration Form"
 msgstr "Форма регистрации"
 
-#: app/views/tasks/tasks.html:60
+#: app/views/Tasks/tasks.html:60
 msgid "Remove"
 msgstr "Удалить"
 
-#: app/views/tasks/tasks.html:70
+#: app/views/Tasks/tasks.html:70
 msgid "Remove all"
 msgstr "Удалить все"
 
-#: app/views/tasks/tasks.html:71
+#: app/views/Tasks/tasks.html:71
 msgid "Remove all done"
 msgstr "Удалить все выполненные"
 
-#: index.html:41
+#: index.html:27
 msgid "Select a language:"
 msgstr "Выберите язык:"
 
-#: app/views/auth/login.html:22
+#: app/views/Auth/login.html:22
 msgid "Sign Up"
 msgstr "Регистрация"
 
-#: app/views/tasks/tasks.html:73
+#: app/views/Tasks/tasks.html:73
 msgid "Statistic:"
 msgstr "Статистика:"
 
-#: app/views/tasks/tasks.html:11
+#: app/views/Tasks/tasks.html:11
 msgid "Tasks list"
 msgstr "Список дел"
 
@@ -150,14 +154,14 @@ msgstr "Имя должно быть от 3 до 25 символов!"
 msgid "The last name must be between 3 and 50 characters!"
 msgstr "Фамилия должна быть от 3 до 50 символов!"
 
-#: app/views/tasks/tasks.html:3
+#: app/views/Tasks/tasks.html:3
 msgid "Welcome:"
 msgstr "Добро пожаловать:"
 
-#: app/views/tasks/tasks.html:31
+#: app/views/Tasks/tasks.html:31
 msgid "What to do"
 msgstr "Что сделать"
 
-#: app/views/tasks/tasks.html:15
+#: app/views/Tasks/tasks.html:15
 msgid "What to do?"
 msgstr "Что сделать?"

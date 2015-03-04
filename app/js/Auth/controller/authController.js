@@ -11,7 +11,7 @@ define([
         function ($scope, $state, authService) {
             $scope.email = "";
             $scope.password = "";
-            $scope.errAuth = "";
+            $scope.errAuth = false;
 
             $scope.signIn = function () {
                 var userData = {"email": _.trim($scope.email), "password": $scope.password};
@@ -19,10 +19,10 @@ define([
                 $scope.email = "";
                 $scope.password = "";
                 if (isAuthUser) {
-                    $scope.errAuth = "";
+                    $scope.errAuth = false;
                     $state.go("Tasks");
                 } else {
-                    $scope.errAuth = "Invalid username or password!";
+                    $scope.errAuth = true;
                 }
             }
         }]);
