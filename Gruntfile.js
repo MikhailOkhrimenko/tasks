@@ -71,7 +71,6 @@ module.exports = function (grunt) {
             }
         },
         //Build project
-        clean: ['build'],
         requirejs: {
             compile: {
                 options: {
@@ -80,11 +79,113 @@ module.exports = function (grunt) {
                     mainConfigFile: "./app/boot.js",
                     findNestedDependencies: true,
                     fileExclusionRegExp: /^\./,
-                    out: "build/js/app.build.js",
+                    out: "build/app/js/app.build.min.js",
                     name: 'boot'
                 }
             }
-        }
+        },
+        copy: {
+            main: {
+                files: [
+                    {
+                        expand: true,
+                        src: [
+                            'app/views/*/**',
+                            //'app/css/**',
+                            'favicon.png',
+                            'index.html'
+                        ],
+                        dest: 'build/'
+                    },
+                    {
+                        expand: false,
+                        src: 'bower_components/requirejs/require.js',
+                        dest: 'build/app/lib/js/require.js'
+                    }
+                ]
+            },
+            css:
+                {
+                    expand: true,
+                    cwd: '.tmp/concat',
+                    src: '**/*',
+                    dest: 'build/'
+                }
+        },
+        imagemin: {
+            dynamic: {
+                files: [{
+                    expand: true,
+                    cwd: 'app/img/',
+                    src: ['**/*.{png,jpg,gif}'],
+                    dest: 'build/app/img'
+                }]
+            }
+        },
+        useminPrepare: {
+            html: ['build/index.html'],
+            options: {
+                root: '.',
+                dest: 'build'
+            }
+        },
+        usemin: {
+            html: ['build/index.html'],
+            options: {
+                root: '.',
+                dest: 'build'
+            }
+        },
+        replace: {
+            appbuildjs: {
+                src: ['build/index.html'],
+                overwrite: true,
+                replacements: [
+                    {
+                        from: 'bower_components/requirejs/require.js',
+                        to: 'app/lib/js/require.js'
+                    },
+                    {
+                        from: 'app/boot',
+                        to: 'app/js/app.build.min'
+                    }
+                ]
+            }
+        },
+        htmlmin: {
+            dist: {
+                options: {
+                    removeComments: true,
+                    collapseWhitespace: true
+                },
+                files: {
+                        'build/index.html': 'build/index.html',
+                        'build/app/views/Auth/login.html': 'build/app/views/Auth/login.html',
+                        'build/app/views/signUp/signup.html': 'build/app/views/signUp/signup.html',
+                        'build/app/views/signUp/terms.html': 'build/app/views/signUp/terms.html',
+                        'build/app/views/Tasks/tasks.html': 'build/app/views/Tasks/tasks.html'
+                }
+            }
+        },
+        compress: {
+            main: {
+                options: {
+                    archive: 'zipped-build/site.zip'
+                },
+                files: [
+                    {
+                        expand: true,
+                        cwd: 'build/',
+                        src: ['**']
+                    }
+                ]
+            }
+        },
+        clean: [
+            'build',
+            '.tmp'
+        ]
+        // End build
     });
 
 
@@ -94,6 +195,14 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-requirejs');
+    grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-contrib-imagemin');
+    grunt.loadNpmTasks('grunt-usemin');
+    grunt.loadNpmTasks('grunt-contrib-concat');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
+    grunt.loadNpmTasks('grunt-text-replace');
+    grunt.loadNpmTasks('grunt-contrib-htmlmin');
+    grunt.loadNpmTasks('grunt-contrib-compress');
 
     grunt.registerTask('default', []);
     grunt.registerTask('gettext', ['nggettext_extract']);
@@ -104,8 +213,18 @@ module.exports = function (grunt) {
         'watch'
     ]);
     grunt.registerTask('build', [
-        'clean',
-        'requirejs'
+        'requirejs',
+        'copy:main',
+        'imagemin',
+        'useminPrepare',
+        'concat',
+        //'cssmin',
+        'usemin',
+        'copy:css',
+        'replace',
+        'htmlmin',
+        'compress',
+        'clean'
     ]);
 
 };
