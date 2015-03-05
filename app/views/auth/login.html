@@ -6,7 +6,7 @@
 <section>
     <!--<h1 translate="yes">Login</h1>-->
     <hr/>
-    <div ng-class="{'show': errAuth}">
+    <div ng-show="errAuth">
         <p class="error" translate="yes">Invalid username or password!</p>
     </div>
     <form class="form-inline" name="loginform" novalidate="">

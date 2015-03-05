@@ -93,7 +93,7 @@ module.exports = function (grunt) {
                     {
                         expand: true,
                         src: [
-                            'app/views/*/**',
+                            'app/views/**/*',
                             //'app/css/**',
                             'favicon.png',
                             'index.html'
@@ -172,7 +172,8 @@ module.exports = function (grunt) {
                         'build/app/views/Auth/login.html': 'build/app/views/Auth/login.html',
                         'build/app/views/signUp/signup.html': 'build/app/views/signUp/signup.html',
                         'build/app/views/signUp/terms.html': 'build/app/views/signUp/terms.html',
-                        'build/app/views/Tasks/tasks.html': 'build/app/views/Tasks/tasks.html'
+                        'build/app/views/Tasks/tasks.html': 'build/app/views/Tasks/tasks.html',
+                        'build/app/views/footer.html': 'build/app/views/footer.html'
                 }
             }
         },

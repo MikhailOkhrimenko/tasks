@@ -35,6 +35,7 @@ define([
             }
             $urlRouter.sync();
         });
+        $rootScope.isDomReady = true;
     }]);
 
     app.config(['$stateProvider', function ($stateProvider) {

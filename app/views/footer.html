@@ -1,0 +1,13 @@
+<section ui-view></section>
+<footer class="text-center">
+    <hr/>
+    <p id="copyright">&copy;&nbsp;Logicify, 2015</p>
+    <div ng-controller="languageController" class="form-inline">
+        <label translate="yes">Select a language:</label>
+        <select class="form-control"
+                ng-model="lang"
+                ng-options="lang for lang in language"
+                ng-change="changeLanguage()">
+        </select>
+    </div>
+</footer>
