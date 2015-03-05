@@ -67,8 +67,15 @@
     <div class="statistics">
         <hr/>
             <span ng-show="allTasks">
-                <button class="btn btn-default" ng-disabled="editTaskId" ng-click="clearAll()" translate="yes">Remove all</button>&nbsp;
-                <button class="btn btn-default" ng-disabled="editTaskId" ng-show="doneTasks" ng-click="clearAllDone()" translate="yes">Remove all done</button>
+                <button class="btn btn-default"
+                        ng-disabled="editTaskId"
+                        ng-click="clearAll()"
+                        translate="yes">Remove all</button>&nbsp;
+                <button class="btn btn-default"
+                        ng-disabled="editTaskId"
+                        ng-show="doneTasks"
+                        ng-click="clearAllDone()"
+                        translate="yes">Remove all done</button>
             </span>
         <h3 translate="yes">Statistic:</h3>
         <p>
