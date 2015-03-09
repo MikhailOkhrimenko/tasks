@@ -7,7 +7,7 @@ define([
     'tasks-include'
 ], function() {
     console.log('mainApp');
-    var app = angular.module('mainApp', ["ui.router", "gettext", 'authModule', 'signUpModule', 'tasksModule']);
+    var app = angular.module('mainApp', ["ui.router", "gettext", 'authModule', 'signUpModule', 'tasksModule', 'ngMockE2E']);
 
     app.constant('config', {
         AUTO_INCREMENT_KEY_ITEM: "autoIncrementItem",

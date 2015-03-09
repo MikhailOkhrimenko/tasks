@@ -8,7 +8,7 @@ define([
 
     console.log('authService');
 
-    app.service("authService", ['config', function (config) {
+    app.service("authService", ['$http', '$q', 'config', function ($http, $q, config) {
 
         function getAllUsersData() {
             var allUsersData = JSON.parse(localStorage.getItem(config.USERS_DATA_KEY));
@@ -31,6 +31,7 @@ define([
         };
 
         this.getAuthUser = function () {
+
             var authUserData = JSON.parse(localStorage.getItem(config.AUTH_USER_DATA_KEY));
             if (authUserData == null) {
                 return false;

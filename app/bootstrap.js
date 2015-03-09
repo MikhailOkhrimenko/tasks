@@ -10,6 +10,7 @@ define([
     'angular',
     'angular-ui-router',
     'angular-gettext',
+    'angular-mocks',
     'lodash',
     'mainApp-include'
 ], function (require, ng) {

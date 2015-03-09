@@ -7,12 +7,14 @@ requirejs.config({
         'jquery': '../bower_components/jquery/dist/jquery',
         'lodash': '../bower_components/lodash/lodash',
         'angular': '../bower_components/angularjs/angular',
+        'angular-mocks': '../bower_components/angular-mocks/angular-mocks',
         'angular-ui-router': '../bower_components/angular-ui-router/release/angular-ui-router',
         'ui-bootstrap': '../bower_components/angular-bootstrap/ui-bootstrap-tpls',
         'angular-gettext': '../bower_components/angular-gettext/dist/angular-gettext',
         'domReady': '../bower_components/domReady/domReady',
 
         'mainApp': './js/Main/mainApp',
+        'fakeBackend': './js/Main/fakeBackend',
         'languageController': './js/Main/controller/languageController',
         'languageService': './js/Main/service/languageService',
         'translation': './js/Main/translation/translations',
@@ -43,6 +45,9 @@ requirejs.config({
             deps: ['angular']
         },
         'angular-gettext': {
+            deps: ['angular']
+        },
+        'angular-mocks': {
             deps: ['angular']
         }
     }

@@ -5,5 +5,6 @@ define([
     'mainApp',
     'translation',
     'languageService',
-    'languageController'
+    'languageController',
+    'fakeBackend'
 ], function() {});
