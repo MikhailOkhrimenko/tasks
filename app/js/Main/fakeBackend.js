@@ -30,8 +30,8 @@ define([
             return allUsersData;
         }
 
-        $httpBackend.
-            whenGET('/getAuthUser').
-            respond();
+        //$httpBackend.
+        //    whenGET('/getAuthUser').
+        //    respond();
     }]);
 });

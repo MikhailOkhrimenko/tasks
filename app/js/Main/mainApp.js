@@ -42,22 +42,22 @@ define([
         $stateProvider
             .state("Auth", {
                 url: "/login",
-                templateUrl: "app/views/Auth/login.html",
+                templateUrl: "./app/views/auth/login.html",
                 controller: "authController"
             })
             .state("Tasks", {
                 url: "/tasks",
-                templateUrl: "app/views/Tasks/tasks.html",
+                templateUrl: "./app/views/tasks/tasks.html",
                 controller: "tasksController"
             })
             .state("SignUp", {
                 url: "/signup",
-                templateUrl: "app/views/signUp/signup.html",
+                templateUrl: "./app/views/signUp/signup.html",
                 controller: "signUpController"
             })
             .state("SignUp.Terms", {
                 url: "/terms",
-                templateUrl: "app/views/signUp/terms.html",
+                templateUrl: "./app/views/signUp/terms.html",
                 controller: "signUpController"
             })
     }]);
